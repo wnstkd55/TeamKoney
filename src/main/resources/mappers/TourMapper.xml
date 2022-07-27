@@ -43,7 +43,7 @@
     	<result property="ep_ny" column = "EP_NY"/>
     	<result property="ep_nx" column = "EP_NX"/>
     	<result property="contents" column = "CONTENTS"/>
-    	<result property="userId" column = "USERID"/>
+    	<result property="userid" column = "USERID"/>
     </resultMap>
 	
 	<sql id="tour">
@@ -81,11 +81,11 @@
 		WHERE T_NAME = #{t_name}
 	</select>
 
-	<!-- <insert id="saveroute">
-		INSERT INTO MY_ROUTE(MR_ID, TITLE, DP_NAME, DP_NY, DP_NX, T_NAME1, T_NY1, T_NX1, T_NAME2, T_NY2, T_NX2, T_NAME3, T_NY3, T_NX3, EP_NAME, EP_NY, EP_NX, CONTENTS, USERID)
+	<insert id="saveroute">
+		INSERT INTO MY_ROUTE(MR_ID, TITLE, DP_NAME, DP_NY, DP_NX, T_NAME1, T_NY1, T_NX1, T_NAME2, T_NY2, T_NX2, T_NAME3, T_NY3, T_NX3, EP_NAME, EP_NY, EP_NX, CONTENTS)
 		VALUES(MYROUTE_SEQ.NEXTVAL, #{title}, #{dp_name}, #{dp_ny},#{dp_nx}
 		,#{t_name1},#{t_ny1},#{t_nx1},#{t_name2},#{t_ny2},#{t_nx2},#{t_name3},#{t_ny3},#{t_nx3}
-		,#{ep_name},#{ep_ny},#{ep_nx},#{contents},#{userId})
-	</insert> -->
+		,#{ep_name},#{ep_ny},#{ep_nx},#{contents})
+	</insert>
 
 </mapper>

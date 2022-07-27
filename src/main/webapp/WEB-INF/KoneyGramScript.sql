@@ -204,17 +204,17 @@ create table my_route(
     dp_ny number(38,8) not null,
     dp_nx number(38,8) not null,
     
-    t1_name varchar2(100), 
-    t1_ny number(38,8), 
-    t1_nx number(38,8), 
+    t_name1 varchar2(100), 
+    t_ny1 number(38,8), 
+    t_nx1 number(38,8), 
     
-    t2_name varchar2(100),
-    t2_ny number(38,8),
-    t2_nx number(38,8),
+    t_name2 varchar2(100),
+    t_ny2 number(38,8),
+    t_nx2 number(38,8),
     
-    t3_name varchar2(100),
-    t3_ny number(38,8),
-    t3_nx number(38,8),
+    t_name3 varchar2(100),
+    t_ny3 number(38,8),
+    t_nx3 number(38,8),
     
     ep_name varchar2(100),
     ep_ny number(38,8),

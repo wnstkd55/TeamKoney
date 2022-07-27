@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/search.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/tourCSS/search.css">
 <meta charset="UTF-8">
 <title>출발지 검색창입니다</title>
 <style type="text/css">

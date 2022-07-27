@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TourMapper">
+	
+	<resultMap id="CityVO" type="kr.co.vo.CityVO">
+		<id property="c_name" column="C_NAME"/>
+        <result property="c_ny" column = "C_NY"/>
+        <result property="c_nx" column = "C_NX"/>
+        <result property="c_pic" column = "C_PICS"/>
+	</resultMap>
+	
+    <resultMap id="TourVO" type="kr.co.vo.TourVO">
+        <id property="t_id" column="T_ID"/>
+        <result property="t_name" column = "T_NAME"/>
+        <result property="t_loadaddress" column = "T_LOADADDRESS"/>
+        <result property="t_gnumaddress" column = "T_GNUMADDRESS"/>
+        <result property="t_ny" column = "T_NY"/>
+        <result property="t_nx" column = "T_NX"/>
+        <result property="t_intro" column = "T_INTRO"/>
+        <result property="t_tel" column = "T_TEL"/>
+        <result property="t_photo" column = "T_PHOTO"/>
+        <result property="t_city" column = "T_CITY"/>
+    </resultMap>
+    
+    <resultMap id ="MyrouteVO" type="kr.co.vo.MyrouteVO">
+    	<id property = "mr_id" column="MR_ID"/>
+    	<result property="title" column = "TITLE"/>
+    	<result property="dp_name" column = "DP_NAME"/>
+    	<result property="dp_ny" column = "DP_NY"/>
+    	<result property="dp_nx" column = "DP_NX"/>
+    	<result property="t_name1" column = "T_NAME1"/>
+    	<result property="t_ny1" column = "T_NY1"/>
+    	<result property="t_nx1" column = "T_NX1"/>
+    	<result property="t_name2" column = "T_NAME2"/>
+    	<result property="t_ny2" column = "T_NY2"/>
+    	<result property="t_nx2" column = "T_NX2"/>
+    	<result property="t_name3" column = "T_NAME3"/>
+    	<result property="t_ny3" column = "T_NY3"/>
+    	<result property="t_nx3" column = "T_NX3"/>
+    	<result property="ep_name" column = "EP_NAME"/>
+    	<result property="ep_ny" column = "EP_NY"/>
+    	<result property="ep_nx" column = "EP_NX"/>
+    	<result property="contents" column = "CONTENTS"/>
+    	<result property="userId" column = "USERID"/>
+    </resultMap>
+	
+	<sql id="tour">
+	select T_ID, T_NAME, T_LOADADDRESS, T_GNUMADDRESS, T_NY, T_NX, T_INTRO, T_TEL, T_PHOTO, T_CITY
+	from TOURS
+	</sql>
+	
+	<sql id="city">
+		SELECT C_NAME, C_NY, C_NX, C_PIC
+		FROM CITY
+	</sql>
+	
+	<sql id = "myroute">
+		SELECT MR_ID, TITLE, DP_NAME, DP_NY, DP_NX, T_NAME1, T_NY1, T_NX1, T_NAME2, T_NY2, T_NX2, T_NAME3, T_NY3, T_NX3, EP_NAME, EP_NY, EP_NX, CONTENTS, USERID
+		FROM MY_ROUTE
+	</sql>
+	
+	<select id="cityname" resultType="kr.co.vo.CityVO">
+		SELECT C_NAME, C_NY, C_NX, C_PIC
+		FROM CITY
+	</select>
+	
+	<select id="tourlist" resultType="kr.co.vo.TourVO">
+		<include refid="tour"/>
+       ORDER BY T_ID
+	</select>
+	
+	<select id="citytour" parameterType="kr.co.vo.TourVO">
+		<include refid="tour"/>
+		WHERE T_CITY = #{t_city}
+	</select>
+	
+	<select id="tourinfo" parameterType="string" resultType="kr.co.vo.TourVO">
+		<include refid="tour"/>
+		WHERE T_NAME = #{t_name}
+	</select>
+
+	<!-- <insert id="saveroute">
+		INSERT INTO MY_ROUTE(MR_ID, TITLE, DP_NAME, DP_NY, DP_NX, T_NAME1, T_NY1, T_NX1, T_NAME2, T_NY2, T_NX2, T_NAME3, T_NY3, T_NX3, EP_NAME, EP_NY, EP_NX, CONTENTS, USERID)
+		VALUES(MYROUTE_SEQ.NEXTVAL, #{title}, #{dp_name}, #{dp_ny},#{dp_nx}
+		,#{t_name1},#{t_ny1},#{t_nx1},#{t_name2},#{t_ny2},#{t_nx2},#{t_name3},#{t_ny3},#{t_nx3}
+		,#{ep_name},#{ep_ny},#{ep_nx},#{contents},#{userId})
+	</insert> -->
+
+</mapper>

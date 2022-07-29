@@ -8,6 +8,7 @@
 <%@ page import = "kr.co.tour.Tour" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,10 +89,13 @@
   <div class="container">
 		<div class="contents">
 			<div class = "left_items" style="width:100%;">
-				<h4>일정만들기</h4>
+			<c:if test="${user != null}">
+				<h4>${user.userId}님의 일정 만들기</h4>
+			</c:if>
 				<div class ="make_sche">
 				<form name = "routeForm" action = "/tours/saveTour" method="post">
 						<input type="text" name="title" placeholder="일정의 제목을 입력해주세요" >
+						<input type="hidden" name = "userid" id="userid" value=${user.userId }>
 						<br>
 						<br>
 						<h5>출발지 입력하기</h5>
@@ -99,6 +103,7 @@
 						<input type = "hidden" id="dp_ny" name="dp_ny">
 						<input type = "hidden" id="dp_nx" name="dp_nx">
 						<!-- <button id = "dpointcheck" onclick="geoLocation('S')">현재내위치 찍기</button> -->
+						<div class = "tour1">
 						<h5>관광지 입력하기</h5>
 							<input type = "text" id="t_name1" name = "t_name1" placeholder="관광지를 입력하세요">
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=1" 
@@ -107,7 +112,12 @@
 							</a>
 							<input type = "hidden" id="t_ny1" name="t_ny1" >
 							<input type = "hidden" id="t_nx1" name="t_nx1" >
-						<h5>관광지 입력하기</h5>
+			        	<div>
+			               <button type="button" class="wayPlus_bt_01" onclick="plusWay_02()">추가</button>
+			            </div>
+						</div>
+						<div class = "tour2">
+							<h5>관광지 입력하기</h5>
 							<input type = "text" id="t_name2" name = "t_name2" placeholder="관광지를 입력하세요">
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=2" 
 								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
@@ -115,14 +125,25 @@
 							</a>
 							<input type = "hidden" id="t_ny2" name="t_ny2" >
 							<input type = "hidden" id="t_nx2" name="t_nx2" >
-						<h5>관광지 입력하기</h5>
-							<input type = "text" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요">
+							<div>
+				               <button type="button" class="wayPlus_bt_02" onclick="plusWay_03()">추가</button>
+				               <button type="button" class="wayRemove_bt_02"
+				                  onclick="removeWay_02()">삭제</button>
+				            </div>
+						</div>
+						<div class = "tour3">
+							<h5>관광지 입력하기</h5>
+								<input type = "text" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요">
 								<a href="tourlist.jsp?c_name=<%=cityname %>&tag=3" 
 									onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 									관광리스트 보러가기
 								</a>
 								<input type = "hidden" id="t_ny3" name="t_ny3" >
 								<input type = "hidden" id="t_nx3" name="t_nx3" >
+							<div>
+				               <button type="button" class="wayRemove_03" onclick="removeWay_03()">삭제</button>
+				            </div>
+						</div>
 						<h5>도착지 입력하기</h5>
 						<input type = "text" id="ep_name" name="ep_name"  placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');">
 						<input type = "hidden" id="ep_ny" name="ep_ny" >
@@ -554,6 +575,25 @@
 				document.getElementById('dp_nx').value = null;
 			
 			
+		}
+		
+		function plusWay_02() {
+			document.querySelector(".tour2").style.display = 'block';
+		}
+		function plusWay_03() {
+			document.querySelector(".tour3").style.display = 'block';
+		}
+		function removeWay_02() {
+			document.querySelector(".tour2").style.display = 'none';
+			document.getElementById('t_name2').value=null;
+			document.getElementById('t_ny2').value=null;
+			document.getElementById('t_nx2').value=null;
+		}
+		function removeWay_03() {
+			document.querySelector(".tour3").style.display = 'none';
+			document.getElementById('t_name3').value=null;
+			document.getElementById('t_ny3').value=null;
+			document.getElementById('t_nx3').value=null;
 		}
 		
 	</script>

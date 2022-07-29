@@ -1,5 +1,7 @@
 package kr.co.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.service.MyRouteService;
 import kr.co.vo.MyrouteVO;
+import kr.co.vo.UsersVO;
 
 @Controller
 @RequestMapping("/tours/*")

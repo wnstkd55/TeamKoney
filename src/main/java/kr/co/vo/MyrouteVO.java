@@ -22,6 +22,6 @@ public class MyrouteVO {
 	private double ep_ny;
 	private double ep_nx;
 	private String contents;
-	private String userid;
-	
+	private String userId;
+	private int hit;
 }

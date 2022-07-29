@@ -1,3 +1,13 @@
+--유저
+create table Users(
+    userId varchar2(50) constraint PK_Users_userId primary key,     -- 유저 아이디
+    userPwd varchar2(50) not null,                                  -- 유저 패스워드 
+    userName varchar2(50) not null,                                 -- 유저 이름
+    userAge number(3) constraint CK_Users_age check (userAge > 0 and userAge < 200),    --유저나이(나이 제한 0부터 200까지)
+    userEmail varchar2(50) not null,                                -- 유저이메일
+    userIntro varchar2(200)                                         -- 유저 자기소개(간단)
+);
+
 --게시판 테이블 생성
 CREATE TABLE MP_BOARD(
     BNO NUMBER NOT NULL,
@@ -106,22 +116,6 @@ commit;
 select * from tours;		--관광지
 alter table tours add constraint pk_t_id primary key (t_id);
 
-create table arr_point(		-- 도착점 테이블
-    arr_id varchar2(30) primary key,
-    arr_loadaddress varchar2(500),
-    arr_gnumaddress varchar2(500),
-    arr_ny number(38,8) not null,
-    arr_nx number(38,8) not null
-);
-
-create table dp_point(		-- 출발점 테이블
-    dp_id varchar2(30) primary key,
-    dp_loadaddress varchar2(500),
-    dp_gnumaddress varchar2(500),
-    dp_ny number(38,8) not null,
-    dp_nx number(38,8) not null
-);
-
 create table my_tourroute(	-- 여행루트 테이블
     tr_id varchar2(30) primary key,
     tr_title varchar2(100) not null,
@@ -221,7 +215,9 @@ create table my_route(
     ep_nx number(38,8),
     
     contents varchar2(2400),
-    userId varchar2(50)
+    userId varchar2(50),
+    
+    hit number	--조회수
 );
 
 

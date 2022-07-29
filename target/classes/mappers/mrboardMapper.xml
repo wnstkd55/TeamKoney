@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myroute">
+	<select id="myroutelist" resultType="kr.co.vo.MyrouteVO">
+		SELECT *
+		FROM MY_ROUTE
+	</select>
+	
+<!-- 	<select id="myroutelist" resultType="kr.co.vo.Myroute">
+		SELECT *
+		FROM MY_ROUTE
+		WHERE USERID = #{userId}
+	</select> -->
+	
+	
+	<select id="waypoint" parameterType="String" resultType="kr.co.vo.MyrouteVO">
+		SELECT DP_NY, DP_NX, T_NY1, T_NX1, T_NY2, T_NX2, T_NY3, T_NX3, EP_NY, EP_NX
+		FROM MY_ROUTE
+		WHERE TITLE = #{title}
+	</select>
+	
+	<select id="read" parameterType="int" resultType="kr.co.vo.MyrouteVO">
+		SELECT *
+		FROM MY_ROUTE
+		WHERE MR_ID = #{mr_id}
+	</select>
+	
+	<update id ="viewcount" parameterType="int">
+		UPDATE MY_ROUTE
+		SET HIT = HIT+1
+		WHERE MR_ID = #{MR_ID}
+	</update>
+	
+
+</mapper>

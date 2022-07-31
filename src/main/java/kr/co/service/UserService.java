@@ -1,5 +1,7 @@
 package kr.co.service;
 
+import java.util.List;
+
 import kr.co.vo.UsersVO;
 
 public interface UserService {
@@ -21,5 +23,9 @@ public interface UserService {
 	
 	// 아이디 중복 체크
 	public int idChk(UsersVO vo) throws Exception;
+
+	void userDrop(UsersVO vo) throws Exception;
+
+	List<UsersVO> adminlist() throws Exception;
 	
 }

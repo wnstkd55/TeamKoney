@@ -34,6 +34,7 @@ public class MyRouteServiceImpl implements MyRouteService {
 	@Override
 	public MyrouteVO read(int mr_id) throws Exception {
 		dao.viewcount(mr_id);
+		dao.replycount(mr_id);
 		return dao.read(mr_id);
 	}
 

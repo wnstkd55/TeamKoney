@@ -33,5 +33,11 @@
 		WHERE MR_ID = #{MR_ID}
 	</update>
 	
+	<update id="updateReplyCount" parameterType="int">
+		update my_route m
+		set m.reply_count = (select count(mr_no) from mr_reply where mr_bno = #{mr_bno})
+		where m.mr_id = #{mr_id}
+	</update>	
+	
 
 </mapper>

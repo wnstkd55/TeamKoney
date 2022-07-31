@@ -41,4 +41,20 @@
 		SELECT COUNT(*) FROM USERS
 		WHERE USERID = #{userId}
 	</select>
+	
+	<!--  관리자 회원삭제-->
+	<delete id = "userDrop">
+		DELETE FROM USERS
+		WHERE USERID = #{userId}
+	</delete>
+	
+	<!-- 회원list -->
+	<select id="adminlist" resultType="kr.co.vo.UsersVO">
+		SELECT USERID,
+			   USERNAME,
+			   USERAGE,
+			   USEREMAIL
+		FROM USERS
+		
+	</select>
 </mapper>

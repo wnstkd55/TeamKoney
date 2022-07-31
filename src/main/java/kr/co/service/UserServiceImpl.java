@@ -1,5 +1,7 @@
 package kr.co.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -43,7 +45,17 @@ public class UserServiceImpl implements UserService {
 		int result = dao.idChk(vo);
 		return result;
 	}
-	
-	
+
+	//관리자 회원삭제
+	@Override
+	public void userDrop(UsersVO vo) throws Exception {
+		dao.userDrop(vo);
+	}
+
+	// 회원 lsit
+	@Override
+	public List<UsersVO> adminlist() throws Exception {
+		return dao.adminlist();
+	}
 
 }

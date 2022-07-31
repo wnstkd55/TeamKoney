@@ -95,7 +95,7 @@
 				<div class ="make_sche">
 				<form name = "routeForm" action = "/tours/saveTour" method="post">
 						<input type="text" name="title" placeholder="일정의 제목을 입력해주세요" >
-						<input type="hidden" name = "userid" id="userid" value=${user.userId }>
+						<input type="hidden" name = "userId" id="userId" value=${user.userId }>
 						<br>
 						<br>
 						<h5>출발지 입력하기</h5>

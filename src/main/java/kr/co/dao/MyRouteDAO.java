@@ -12,4 +12,6 @@ public interface MyRouteDAO {
 	MyrouteVO read(int mr_id) throws Exception;
 
 	void viewcount(int mr_id) throws Exception;
+
+	void replycount(int mr_id) throws Exception;
 }

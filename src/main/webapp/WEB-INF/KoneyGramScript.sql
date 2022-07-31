@@ -129,31 +129,14 @@ create table my_tourroute(	-- 여행루트 테이블
 alter table my_tourroute add tr_content varchar2(2400);
 
 /* 외래키 작업*/
-ALTER TABLE my_tourroute
-ADD CONSTRAINT fk_dp_id foreign KEY(dp_id) references dp_point (dp_id);
-
-ALTER TABLE my_tourroute
-ADD CONSTRAINT fk_arr_id foreign KEY(arr_id) references arr_point (arr_id);
 
 ALTER TABLE my_tourroute
 ADD CONSTRAINT fk_t_id foreign KEY(t_id) references tours (t_id);
 
+ALTER TABLE my_tourroute
+ADD CONSTRAINT fk_userid foreign KEY(userid) references users (userid) on delete cascade;
+
 drop table my_tourroute;
-drop table arr_point;
-drop table dp_point;
-
-select * from dp_point;
-
---출발점 임시 더미데이터
-insert into dp_point values('1','서울 금천구 독산동 독산4동',' 서울 금천구 독산동 독산4동',37.467779,126.901991);
--- 도착점 임시 더미 데이터
-insert into arr_point values('1','서울 금천구 독산동 독산4동',' 서울 금천구 독산동 독산4동',37.467779,126.901991);
-
-select * from dp_point;
-
-select * from arr_point;
-
-desc arr_point;
 
 --행정구역 테이블
 create table city(
@@ -185,12 +168,7 @@ select * from city;
 SELECT * FROM tours where t_city = '제주특별자치도';
 commit;
 
--- 나의 관광지 일정 페이지 메인 sql
-select tr_title as "계획제목", tr_date as "계획날짜", tr_content as "계획 메모", dp_ny as "출발지경도", dp_nx as "출발지위도",
-arr_ny as "도착지경도", arr_nx as "도착지위도", t_ny as "관광지 경도", t_nx as "관광지 위도"
-from dp_point d, arr_point a, tours t, my_tourroute mt
-where d.dp_id = mt.dp_id and a.arr_id = mt.arr_id and t.t_id = mt.tr_id;
-
+--나의 일정 테이블
 create table my_route(
     mr_id number primary key,
     title varchar2(200) not null,
@@ -225,4 +203,31 @@ commit;
 
 select * from festival;
 select * from tours;
-delete festival where f_ny is null or f_nx is null;
+delete festival where f_ny is null or f_nx is null;	--null값 다 제거
+
+alter table my_route add(hit number default 0); -- 조회수 컬럼 추가
+
+alter table my_route add reply_count number default 0;	-- 댓글 컬럼 추가
+
+--나의 일정 게시판 댓글
+create table mr_reply(
+    mr_no number primary key,          -- 댓글 번호
+    mr_bno number not null,            -- 댓글달 게시물 번호
+    constraint fk_reply_bno foreign key(mr_bno) references my_route(mr_id)
+    on delete cascade,
+    mr_writer varchar2(50) not null,   -- 댓글 작성자
+    constraint fk_reply_writer foreign key(mr_writer) references users(userid)
+    on delete cascade,
+    mr_content varchar2(1000),     -- 댓글 내용
+    mr_regdate date default sysdate   --댓글 작성 날짜
+);
+
+--댓글 시퀀스
+create sequence mrreply_seq
+    minvalue 1
+    maxvalue 99999
+    increment by 1
+    start with 1    
+    nocache
+    noorder
+    nocycle;

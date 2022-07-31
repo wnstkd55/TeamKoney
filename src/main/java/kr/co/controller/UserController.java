@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,6 +47,19 @@ public class UserController {
 		}
 		return "redirect:/";
 	}
+	
+	   // 마이페이지
+	   @RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	   public void mypage() throws Exception{
+	      
+	   }
+	   
+	   // 로그인 get
+	   @RequestMapping(value = "/login", method = RequestMethod.GET)
+	   public void getLogin() throws Exception{
+	      logger.info("get login");
+	      
+	   }
 	
 	// 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -105,6 +119,25 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	// 회원 삭제 - 관리자 
+	@RequestMapping(value = "/userDrop", method = RequestMethod.GET)
+	public String userDelete(UsersVO vo) throws Exception{
+		service.userDrop(vo);
+		
+		return "redirect:/user/adminlist";
+	}
+	
+	//회원 select 
+	// admin계정 회원 리스트
+	@RequestMapping(value = "/adminlist", method = RequestMethod.GET)
+	public String adminlist(Model model) throws Exception{
+		logger.info("adminlist");
+		
+		model.addAttribute("adminlist",service.adminlist());
+		
+		return "user/admin";
+	}
+
 	// 패스워드 체크
 	@ResponseBody
 	@RequestMapping(value="/passChk", method = RequestMethod.POST)

@@ -43,7 +43,7 @@
     	<result property="ep_ny" column = "EP_NY"/>
     	<result property="ep_nx" column = "EP_NX"/>
     	<result property="contents" column = "CONTENTS"/>
-    	<result property="userid" column = "USERID"/>
+    	<result property="userId" column = "USERID"/>
     </resultMap>
 	
 	<sql id="tour">

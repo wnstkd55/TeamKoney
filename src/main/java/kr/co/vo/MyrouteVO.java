@@ -24,4 +24,5 @@ public class MyrouteVO {
 	private String contents;
 	private String userId;
 	private int hit;
+	private int reply_count;
 }

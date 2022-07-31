@@ -5,54 +5,60 @@
 <html>
 <head>
 	<title>Home</title>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
+	<link href='/resources/css/contents.css' rel="stylesheet" type="text/css">
 </head>
-<a href="/board/list">게시판</a><br/>
+<a href="/board/list">게시판</a><br />
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#loginBtn").on("click", function(){
+			location.href="user/login";
+		})
 		$("#logoutBtn").on("click", function(){
 			location.href="user/logout";
 		})
 		$("#registerBtn").on("click", function(){
 			location.href="user/register";
 		})
-		$("#userUpdateBtn").on("click", function(){
-			location.href="user/userUpdateView";
+		$("#mypageBtn").on("click", function(){
+			location.href="user/mypage";
 		})
-		
+		$("#userInfoBtn").on("click", function(){
+			location.href="user/adminlist";
+		})
 	})
+	function loginfalse(){
+		alert("로그인 실패");			
+		window.history.back();		/* 뒤로가기*/
+	}	
 </script>
 <body>
-	<form name='homeForm' method="post" action="/user/login">
+	<div id ="nav">
+		<%@ include file="menu/menu1.jsp" %>
+	</div>
+	<form name='homeForm'>
 		<c:if test="${user == null}">
 			<div>
-				<label for="userId"></label>
-				<input type="text" id="userId" name="userId">
-			</div>
-			<div>
-				<label for="userPwd"></label>
-				<input type="password" id="userPwd" name="userPwd">
-			</div>
-			<div>
-				<button type="submit">로그인</button>
+				<button id="loginBtn" type="button">로그인</button>
 				<button id="registerBtn" type="button">회원가입</button>
 			</div>
 		</c:if>
-		<c:if test="${user != null }">
+		<c:if test="${user != null and user.userId != 'admin'}">
 			<div>
 				<p>${user.userId}님 환영 합니다.</p>
-				<button id="userUpdateBtn" type="button">회원정보수정</button>
+				<button id="mypageBtn" type="button">마이페이지</button>
+				<button id="logoutBtn" type="button">로그아웃</button>
+			</div>
+		</c:if>
+		<c:if test="${user.userId == 'admin' }">
+			<div>
+				<p>관리자님 환영 합니다.</p>
+				<button id="userInfoBtn" type="button">회원관리</button>
 				<button id="logoutBtn" type="button">로그아웃</button>
 			</div>
 		</c:if>
 		<c:if test="${msg == false}">
-			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
+			<script> loginfalse(); </script>
 		</c:if>
 	</form>
 </body>

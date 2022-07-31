@@ -36,5 +36,10 @@ public class MyRoutedDAOImpl implements MyRouteDAO {
 	public void viewcount(int mr_id) throws Exception {
 		sqlSession.update("myroute.viewcount", mr_id);
 	}
+	
+	@Override
+	public void replycount(int mr_id) throws Exception{
+		sqlSession.update("myroute.updateReplyCount",mr_id);
+	}
 
 }

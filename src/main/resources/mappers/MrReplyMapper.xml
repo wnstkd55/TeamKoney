@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MrReply">
+	
+	<select id="mrlist" resultType="MrReplyVO" parameterType="MrReplyVO">
+	
+		select mr_no,mr_content,mr_writer,mr_regdate from mr_reply where mr_bno = #{mr_bno}
+		order by mr_no asc
+		
+	</select>
+
+	<insert id="mrinsert" parameterType="MrReplyVO">
+	
+		insert into mr_reply(mr_no,mr_bno,mr_writer,mr_content)
+		values(mrreply_seq.nextval,#{mr_bno},#{mr_writer}, #{mr_content})
+	
+	</insert>
+	
+	<update id="mrupdate" parameterType="MrReplyVO">
+	
+		update mr_reply set mr_content=#{mr_content}
+		where mr_no = #{mr_no}	
+	
+	</update>
+	
+	<delete id="mrdelete" parameterType="MrReplyVO">
+	
+		delete from mr_reply where mr_no = #{mr_no}
+		
+	</delete>
+	
+</mapper>

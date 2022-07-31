@@ -10,9 +10,6 @@
 	 	<style type="text/css">
 			li {list-style: none; float: left; padding: 6px;}
 		</style>
-		
-		
-		
 	</head>
 	<body>
 	<jsp:include page="kmap.jsp"></jsp:include>

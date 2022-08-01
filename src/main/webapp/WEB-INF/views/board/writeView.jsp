@@ -49,6 +49,7 @@
 			
 			<section id="container">
 				<form name="writeForm" method="post" action="/board/write">
+					<input type="hidden" name = "userId" value="${user.userId}"/>
 					<table>
 						<tbody>
 							<c:if test="${user.userId != null}">

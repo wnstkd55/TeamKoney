@@ -44,7 +44,7 @@
         <li><a class="ion-social-instagram" href="#" target="_blank"></a></li>
       </ul>
       <div class="sign-up">
-        <a href="#">Login <span class="ion-arrow-right-c"></span>				</a>
+        <a href="/user/login">Login <span class="ion-arrow-right-c"></span>				</a>
       </div>
     </div>
   </div>

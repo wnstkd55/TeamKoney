@@ -5,7 +5,7 @@
 <html>
 <head>
 	<title>Home</title>
-	
+	<script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href='/resources/css/contents.css' rel="stylesheet" type="text/css">
 </head>
 <a href="/board/list">게시판</a><br />

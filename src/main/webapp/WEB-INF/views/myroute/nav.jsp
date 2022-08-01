@@ -9,7 +9,7 @@
 	<li><a href="/board/list">여행지 요청게시판</a></li>
 	<li>
 		<c:if test="${user != null}"><a href="/user/logout">로그아웃</a></c:if>
-		<c:if test="${user == null}"><a href="/">로그인</a></c:if>
+		<c:if test="${user == null}"><a href="/user/login">로그인</a></c:if>
 	</li>
 	<li>
 		<c:if test="${user != null}">

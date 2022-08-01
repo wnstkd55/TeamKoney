@@ -116,11 +116,13 @@
 						</tr>		
 					</tbody>			
 				</table>
-				<div>
-					<button type="submit" class="update_btn">수정</button>
-					<button type="submit" class="delete_btn">삭제</button>
-					<button type="submit" class="list_btn">목록</button>	
-				</div>
+				<c:if test="${user.userId eq read.userId || user.userId eq 'admin'}">
+					<div>
+						<button type="submit" class="update_btn">수정</button>
+						<button type="submit" class="delete_btn">삭제</button>
+						<button type="submit" class="list_btn">목록</button>	
+					</div>
+				</c:if>
 				
 				<!-- 댓글 -->
 				<div id="reply">
@@ -133,10 +135,12 @@
 						        </p>
 						
 						        <p>${replyList.content}</p>
-						        <div>
-									<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-									<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
-								</div>
+						        <c:if test="${user.userId eq 'admin'}">
+							        <div>
+										<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
+										<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
+									</div>
+								</c:if>
 					    	</li>
 					    </c:forEach>   
 					</ol>
@@ -149,14 +153,16 @@
 					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 					
-					<div>
-					    <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" />
-					    <br/>
-					    <label for="content">댓글 내용</label><input type="text" id="content" name="content" />
-					</div>
-					<div>
-					 	 <button type="button" class="replyWriteBtn">작성</button>
-					</div>
+					<c:if test="${user.userId eq 'admin'}">
+						<div>
+						    <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" />
+						    <br/>
+						    <label for="content">댓글 내용</label><input type="text" id="content" name="content" />
+						</div>
+						<div>
+						 	 <button type="button" class="replyWriteBtn">작성</button>
+						</div>
+					</c:if>
 				</form>
 				
 			</section>

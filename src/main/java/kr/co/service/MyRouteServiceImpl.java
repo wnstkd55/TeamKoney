@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.dao.MyRouteDAO;
+import kr.co.vo.HeartVO;
 import kr.co.vo.MyrouteVO;
 
 @Service
@@ -37,6 +38,23 @@ public class MyRouteServiceImpl implements MyRouteService {
 		dao.replycount(mr_id);
 		return dao.read(mr_id);
 	}
+	
+	 //좋아요 누를경우
+    @Transactional(rollbackFor = Exception.class)
+    public int likesPush(Integer mr_id, String userId){
+    	dao.likePush(mr_id,userId);
+        return dao.likeCntUp(mr_id);
+    }
+    //좋아요 취소할 경우
+    @Transactional(rollbackFor = Exception.class)
+    public int likesCancel(Integer mr_id, String userId){
+    	dao.likeCancel(mr_id,userId);
+        return dao.likeCntDown(mr_id);
+    }
+    @Override
+    public HeartVO findLike(Integer mr_id, String userId){
+        return dao.findLike(mr_id,userId);
+    }
 
 
 }

@@ -231,3 +231,23 @@ create sequence mrreply_seq
     nocache
     noorder
     nocycle;
+    
+-- 좋아요!!!!
+create table heart(
+    heartid number primary key,
+    mr_id number not null,
+    userid varchar2(50) not null,
+    heart number default 0,
+    constraint fk_mlid foreign key(userid) references users(userid) on delete cascade,
+    constraint fk_mlbid foreign key(mr_id) references my_route(mr_id) on delete cascade
+);   
+
+-- 좋아요 시퀀스
+create sequence mrlike_seq
+    minvalue 1
+    maxvalue 99999
+    increment by 1
+    start with 1    
+    nocache
+    noorder
+    nocycle;

@@ -1,19 +1,12 @@
-@font-face {
-    font-family: 'MabinogiClassicR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/MabinogiClassicR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html,
 body {
   background: #FFF;
   color: #444;
-  font-family: 'MabinogiClassicR';
   margin: 0 auto;
   overflow-X: hidden;
   overflow-Y: auto;
   padding: 0;
+  font-size:20px;
 }
 
 a {
@@ -158,7 +151,6 @@ html.active #overlay {
   background: #FF5959;
   border: 1px solid #FF5959;
   color: #FFF;
-  font-family: 'Abel', sans-serif;
   font-size: 16px;
   font-weight: bold;
   height: 40px;
@@ -256,9 +248,7 @@ section > h1 {
 
 section > h1 > span {
   display: block;
-  font-family: 'Cabin', cursive;
   font-size: 16px;
-  font-style: italic;
   font-weight: 400;
   text-transform: none;
 }

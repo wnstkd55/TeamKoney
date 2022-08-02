@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div>
-		<%@include file="nav.jsp" %>
+		<%@ include file="../menu/menu1.jsp" %>
 	</div>
 	<div class="album py-5 bg-light">
 	    <div class="container">

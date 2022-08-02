@@ -12,11 +12,15 @@
 		</style>
 	</head>
 	<body>
-	<jsp:include page="kmap.jsp"></jsp:include>
+	
+		<%@ include file="../menu/menu1.jsp" %>
+	<div class = "mapimg" style="margin-top:100px;">
+		<jsp:include page="kmap.jsp"></jsp:include>
+	</div>
 		<div id="root" style = "float: left;">
-			<header>
+			<!-- <header>
 				<h1> 축제 목록</h1>
-			</header>
+			</header> -->
 			<hr />
 			
 			<hr />

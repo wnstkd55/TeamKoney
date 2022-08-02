@@ -10,6 +10,7 @@
 
 body{
 	background: linear-gradient(45deg,#6cf0ee,#ff5acd);
+	margin: 100px,0,0,0;
 }
 
 .flex-container{

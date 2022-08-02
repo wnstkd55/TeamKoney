@@ -23,18 +23,15 @@
 		<%@ include file="../menu/menu1.jsp" %>
 	</div>
 <main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
+  <div class="header">
+  	<div class= "container">
       	<c:if test="${user != null}">
 			<h2>${user.userId}님 안녕하세요.</h2>
 		</c:if>
         <h1 class="fw-light">여행할 도시를 선택해 주세요!</h1>
         <p class="lead text-muted">가고싶은 광역시, 도를 골라주시면 해당지역의 관광지역을 보여줍니다</p>
       </div>
-    </div>
-  </section>
-
+   </div>
   <div class="album py-5 bg-light">
     <div class="container">
 

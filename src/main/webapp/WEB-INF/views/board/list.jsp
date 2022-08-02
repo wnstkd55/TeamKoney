@@ -2,26 +2,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
-	<head>
+
+	
+	<!-- <head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	<title>게시판</title>
 	 	<style type="text/css">
 			li {list-style: none; float: left; padding: 6px;}
 		</style>
-	</head>
+	</head> -->
 	<body>
 		<div id="root">
-			<header>
+		<!-- 	<header>
 				<h1> 게시판</h1>
-			</header>
+			</header> -->
 			<hr />
 			 
 			<div>
-				<%@include file="nav.jsp" %>
+				<%@ include file="../menu/menu1.jsp" %>
 			</div>
 			<hr />
 			
-			<section id="container">
+			<section id="container" style="margin-top:100px;">
 				<form role="form" method="get">
 					<table>
 						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th><th>답변상태</th></tr>

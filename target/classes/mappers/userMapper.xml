@@ -3,10 +3,27 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userMapper">
+	<!-- 프로필사진 등록 -->
+    <insert id="insertFile" parameterType="hashMap">
+	INSERT INTO MP_FILE(
+		FILE_NO,
+		USERID,
+		ORG_FILE_NAME,
+		STORED_FILE_NAME,
+		FILE_SIZE
+	)VALUES(
+		SEQ_MP_FILE_NO.NEXTVAL,
+		#{USERID},
+		#{ORG_FILE_NAME},
+		#{STORED_FILE_NAME},
+		#{FILE_SIZE}
+	)
+    </insert>
+
 	<!-- 회원가입 -->
 	<insert id="register">
-		INSERT INTO Users(userId, userPwd, userName, userAge, userEmail, userIntro)
-		VALUES(#{userId}, #{userPwd}, #{userName}, #{userAge}, #{userEmail}, #{userIntro})
+		INSERT INTO Users(userId, userPwd, userName, userAge, userEmail, userIntro, stored_file_name)
+		VALUES(#{userId}, #{userPwd}, #{userName}, #{userAge}, #{userEmail}, #{userIntro}, (SELECT STORED_FILE_NAME FROM MP_FILE WHERE USERID = #{userId}))
 	</insert>
 	
 	<!-- 로그인 -->

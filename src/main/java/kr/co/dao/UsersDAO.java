@@ -1,6 +1,7 @@
 package kr.co.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.vo.UsersVO;
 
@@ -26,5 +27,7 @@ public interface UsersDAO {
 	void userDrop(UsersVO vo) throws Exception;
 
 	List<UsersVO> adminlist() throws Exception;
+
+	void insertFile(Map<String, Object> map) throws Exception;
 	
 }

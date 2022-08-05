@@ -1,6 +1,7 @@
 package kr.co.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -59,7 +60,11 @@ public class UsersDAOImpl implements UsersDAO{
 		return sql.selectList("userMapper.adminlist");
 	}
 	
-	
+	// 프로필 사진 업로드
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		sql.insert("userMapper.insertFile", map);
+	}
 	
 	
 	

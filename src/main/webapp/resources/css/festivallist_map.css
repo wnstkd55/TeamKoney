@@ -1,3 +1,7 @@
+*{
+	text-decoration: none;
+}
+
 .OUTLINE {
     stroke-linejoin:round;
     stroke: #ffffff;

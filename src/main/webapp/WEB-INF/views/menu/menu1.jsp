@@ -6,74 +6,107 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-<link href='//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
-<link href='/resources/css/style.css' rel="stylesheet" type="text/css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<link href='/resources/css/style.css' rel="stylesheet" type='text/css' media='screen'>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 	<title>KoneyGram</title>
 </head>
 <body>
-	 <header>
-	  <div class="container">
-	    <span id="home"><a href="/"><span class="ion-camera"></span></span></a>
-	    <div class="box">
-	      <ul>
-	        <li><a href="/tours/tour">나의 일정 만들기</a></li>
-	        <li><a href="/festival/listf">지역 축제 게시판</a></li>
-	        <li><a href="/myroute/mrlist">KoneyStory</a></li>
-	        <li><a href="/board/list">관광지 추가 요청게시판 </a></li>
-	      </ul>
-	    </div>
-	    <span id="menu"><span class="ion-navicon-round"></span></span>
-	  </div>
-	</header>
-<menu>
-  <div class="logo"><a href="/"><span class="ion-camera"></span></a></div>
-  <span id="close-menu"><span class="ion-close-round"></span></span>
-  <div class="container">
-    <div class = userinfo>
-    	<c:if test="${user != null}">
-    		<span>${user.userId}님 환영합니다!</span><br/><br/>
-    		<img alt="userPhoto" src="/resources/images/userphoto/boy.png" style="width:200px; height:200px;"><br/><br/>
-    		<span>${user.userIntro }</span><br/><br/>
-    	</c:if>
-    </div>
-    <div class="box">
-      
-      <c:if test="${user != null}">
-      		<ul>
-	      	<c:if test="${user.userId == 'admin' }">
-	   			<li><a href="/user/adminlist">회원관리 <span class="ion-arrow-right-c"></span></a></li>
-	    	</c:if>
-	    	<c:if test="${user.userId !='admin' }">
-	   			<li><a href="/user/mypage">마이페이지 <span class="ion-arrow-right-c"></span></a></li>
-	    	</c:if>
-	    	</ul>
-    	</c:if>
-      
-      <ul style="font-size: 20px;">
-        <li><a href="/tours/tour">나의 일정 만들기</a></li>
-        <li><a href="/festival/listf">지역 축제 게시판</a></li>
-        <li><a href="/myroute/mrlist">KoneyStory</a></li>
-        <li><a href="/board/list">관광지 추가 요청게시판 </a></li>
-      </ul>
-      <ul style="font-size: 20px;">
-        <li><a class="ion-social-facebook" href="#" target="_blank"></a></li>
-        <li><a class="ion-social-twitter" href="#" target="_blank"></a></li>
-        <li><a class="ion-social-instagram" href="#" target="_blank"></a></li>
-      </ul>
-      <div class="sign-up">
-      	<c:if test="${user == null}">
-        	<a href="/user/login">Login <span class="ion-arrow-right-c"></span></a>
-        </c:if>
-        <c:if test="${user != null}">
-        	<a href="/user/logout">Logout <span class="ion-arrow-right-c"></span></a>
-        </c:if>
-      </div>
-    </div>
-  </div>
-</menu>
-<script  src="/resources/js/index.js"></script>
+	 <div class="navigation" style="z-index:50;">
+        <ul style="padding-left: 0px;">
+            <li class = "list">
+                <b></b>
+                <b></b>
+                <a href="/">
+                    <span class="icon"></span>
+                    <span class="title"><img src="/resources/images/contents/logo150a.png" style="width:200px; height: 100px;"></span>
+                </a>
+                <br/>
+                <br/>
+                <c:if test="${user!= null}">
+                    <div class = "userinfo">
+                        <img src="/resources/upload/${user.stored_file_name}" alt="userimage">
+                        <span>${user.userName}님 환영합니다!</span>
+                        <br/>
+                        <span>${user.userIntro }</span>
+                        <br/>
+				      	<c:if test="${user.userId == 'admin' }">
+				   			<a href="/user/adminlist">회원관리</a>
+				    	</c:if>
+				    	<c:if test="${user.userId !='admin' }">
+				   			<a href="/user/mypage">마이페이지</a>
+				    	</c:if>
+                    </div>
+               </c:if>
+               <c:if test="${user== null}">
+               	<div class = "userinfo" style="height: 50px;">
+	            	<span>&nbsp &nbsp 로그인을 해주세요! </span>
+                </div>
+               </c:if>
+            </li>
+            <li class = "list">
+                <b></b>
+                <b></b>
+                <a href="/tours/tour">
+                    <span class="icon"><ion-icon name="calendar-clear-outline"></ion-icon></span>
+                    <span class="title">Scheduler</span>
+                </a>
+            </li>
+            <li class = "list">
+                <b></b>
+                <b></b>
+                <a href="/myroute/mrlist">
+                    <span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
+                    <span class="title">Story</span>
+                </a>
+            </li>
+            <li class = "list">
+                <b></b>
+                <b></b>
+                <a href="/festival/listf">
+                    <span class="icon"><ion-icon name="star-outline"></ion-icon></span>
+                    <span class="title">Festival</span>
+                </a>
+            </li>
+            <li class = "list">
+                <b></b>
+                <b></b>
+                <a href="/board/list">
+                    <span class="icon"><ion-icon name="megaphone-outline"></ion-icon></span>
+                    <span class="title">Requirements</span>
+                </a>
+            </li>
+            <li class = "list">
+                <b></b>
+                <b></b>
+               <c:if test="${user == null}">
+                <a href="/user/login">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title">Login</span>
+                </a>
+                </c:if>
+                    <c:if test="${user != null}">
+                <a href="/user/logout">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title">Logout</span>
+                </a>
+                </c:if>
+            </li>
+            
+            
+        </ul>
+        <div class="toggle"></div>
+       </div>
+
+       <script>
+            let navigation = document.querySelector('.navigation');
+            let toggle = document.querySelector('.toggle');
+
+            toggle.onclick=function(){
+                navigation.classList.toggle('active')
+            }
+       </script>
 </body>
 </html>

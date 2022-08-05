@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.service.UserService;
@@ -23,6 +24,7 @@ public class UserController {
 	
 	@Inject
 	UserService service;
+
 	
 	// 회원가입 get
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -33,14 +35,14 @@ public class UserController {
 	
 	// 회원가입 post
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(UsersVO vo) throws Exception{
+	public String postRegister(UsersVO vo, MultipartHttpServletRequest mpRequest) throws Exception{
 		logger.info("post register");
 		int result = service.idChk(vo);
 		try {
 			if(result == 1) {
 				return "/user/register";
 			}else if(result ==0 ) {
-				service.register(vo);
+				service.register(vo, mpRequest);
 			}
 		}catch(Exception e) {
 			throw new RuntimeException();
@@ -153,5 +155,7 @@ public class UserController {
 		int result = service.idChk(vo);
 		return result;
 	}
+	
+
 	
 }

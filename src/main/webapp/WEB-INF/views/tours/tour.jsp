@@ -22,9 +22,9 @@
 <div id ="nav">
 		<%@ include file="../menu/menu1.jsp" %>
 	</div>
-<main>
-  <div class="header">
-  	<div class= "container">
+<main style="margin-top: 100px;margin-left: 350px; padding-left:100px; margin-right:100px;padding-left: 0px;">
+  <div class="header" >
+  	<div class= "container" style="text-align:center;">
       	<c:if test="${user != null}">
 			<h2>${user.userId}님 안녕하세요.</h2>
 		</c:if>
@@ -43,7 +43,7 @@
 			for(int i=0; i<citylist.size(); i++){
 		%>
         <div class="col">
-          <div class="card shadow-sm">
+          <div class="card shadow-sm" style="z-index:1;">
           <div class="image">
           	<a href="makesche?c_ny=<%=citylist.get(i).getC_ny()%>&c_nx=<%=citylist.get(i).getC_nx()%>&c_name=<%=citylist.get(i).getC_name()%>">
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/resources/images/city_pic/<%=citylist.get(i).getC_pic() %>" alt="도시사진">

@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800.900$display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+section .imgbox{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+section .imgbox::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg, #eea172, #45a1fc);
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+section .imgbox img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .contentbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+section .contentbox .formbox{
+    width:50%
+}
+
+section .contentbox .formbox h2{
+    color:#607d8b;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #ffa845;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+section .contentbox .formbox .inputbox{
+    margin-bottom: 20px;
+}
+
+section .contentbox .formbox .inputbox span{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607d8b;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+section .contentbox .formbox .inputbox input{
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+
+section .contentbox .formbox .inputbox input[type="submit"]{
+    background: #ffb845;
+    color: #fff;
+    outline: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+section .contentbox .formbox .inputbox input[type="submit"]:hover{
+    background: #f5ac36;
+}
+
+section .contentbox .formbox .remember{
+    margin-bottom: 10px;
+    color: #607d8b;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+section .contentbox .formbox .inputbox p{
+    color: #607d8b;
+}
+
+section .contentbox .formbox .inputbox p a{
+    color:#ffb545;
+}
+
+section .contentbox .formbox h3{
+    color:#607d8b;
+    text-align: center;
+    margin: 80px 0 10px;
+    font-weight: 500;
+}
+
+section .contentbox .formbox .sci{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .contentbox .formbox .sci li{
+    list-style: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #607d8b;
+    border-radius:  50%;
+    margin: 0 7px;
+    cursor: pointer;
+}
+
+section .contentbox .formbox .sci li:hover{
+    background: #ffb545;
+}
+
+section .contentbox .formbox .sci li svg{
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    transform: scale(0.5);
+    filter:invert(1);
+}
+
+@media(max-width:768px){
+    section .imgbox{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    section .contentbox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    section .contentbox .formbox{
+        width: 100%;
+        padding: 40px;
+        background: rgba(255 255 255 / 0.9);
+        margin: 50px;
+    }
+
+    section .contentbox .formbox h3{
+        color: #607d8b;
+        text-align: center;
+        margin: 30px 0 10px;
+        font-weight: 500;
+    }
+}

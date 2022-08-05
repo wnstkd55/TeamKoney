@@ -2,12 +2,14 @@ package kr.co.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import kr.co.vo.UsersVO;
 
 public interface UserService {
 	
 	// 회원가입
-	public void register(UsersVO vo) throws Exception;
+	void register(UsersVO vo, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	// 로그인
 	public UsersVO login(UsersVO vo) throws Exception;
@@ -27,5 +29,5 @@ public interface UserService {
 	void userDrop(UsersVO vo) throws Exception;
 
 	List<UsersVO> adminlist() throws Exception;
-	
+
 }

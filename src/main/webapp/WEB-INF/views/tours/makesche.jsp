@@ -15,7 +15,7 @@
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="/resources/css/tourCSS/style_auto2.css">
  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>KoneyGram</title>
@@ -62,8 +62,14 @@
 							</a>
 							<input type = "hidden" id="t_ny1" name="t_ny1" >
 							<input type = "hidden" id="t_nx1" name="t_nx1" >
+							<input type = "hidden" id="t_intro1" name="t_intro1" >
 			        	<div>
-			               <button type="button" class="wayPlus_bt_01" onclick="plusWay_02()">추가</button>
+				        	<span class="wayPlus_bt_01" onclick="plusWay_02()">
+				               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								  <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+								</svg>
+				            </span>
 			            </div>
 						</div>
 						<div class = "tour2">
@@ -75,10 +81,18 @@
 							</a>
 							<input type = "hidden" id="t_ny2" name="t_ny2" >
 							<input type = "hidden" id="t_nx2" name="t_nx2" >
+							<input type = "hidden" id="t_intro2" name="t_intro2" >
 							<div>
-				               <button type="button" class="wayPlus_bt_02" onclick="plusWay_03()">추가</button>
-				               <button type="button" class="wayRemove_bt_02"
-				                  onclick="removeWay_02()">삭제</button>
+				               <span class="wayPlus_bt_02" onclick="plusWay_03()"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								  <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+								</svg></span>
+				               <span type="button" class="wayRemove_bt_02" onclick="removeWay_02()">
+				               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-dash" viewBox="0 0 16 16">
+								  <path fill-rule="evenodd" d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								</svg>
+				               </span>
 				            </div>
 						</div>
 						<div class = "tour3">
@@ -90,8 +104,14 @@
 								</a>
 								<input type = "hidden" id="t_ny3" name="t_ny3" >
 								<input type = "hidden" id="t_nx3" name="t_nx3" >
+								<input type = "hidden" id="t_intro3" name="t_intro3" >
 							<div>
-				               <button type="button" class="wayRemove_03" onclick="removeWay_03()">삭제</button>
+				               <span type="button" class="wayRemove_03" onclick="removeWay_03()">
+				               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-dash" viewBox="0 0 16 16">
+								  <path fill-rule="evenodd" d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								</svg>
+				               </span>
 				            </div>
 						</div>
 						<h5>도착지 입력하기</h5>
@@ -103,13 +123,25 @@
 						<br>
 						<br>
 						<textarea name="contents" placeholder="메모를 입력해주세요" style="width:100%; height: 100px"></textarea>
-						
-						<button class = "save_btn" type = "submit"> 저장하기</button>
+						<c:if test="${user != null}">
+						<button class = "btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="일정 저장하기" type = "submit">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill" viewBox="0 0 16 16">
+						  <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z"/>
+						</svg>
+						</button>
+						</c:if>
 						</form>
 					</div>
-				<button onclick="route();">경로확인하기</button>
-					<button onclick="removeMarker();"> 마커 지우기</button>
-					<button onclick="addpass();">관광지마커 저장하기</button>
+					<button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="마커 초기화" onclick="removeMarker();">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+						  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+						</svg>
+					</button>
+					<button class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="경로 보기" onclick="addpass();">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
+						  <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z"/>
+						</svg>
+					</button>
 			</div>
 			<div class = "map">
 				<div id = "map_div"></div>
@@ -318,7 +350,7 @@
 	            passList += tourlist[i]
 	        };
 	        console.log(passList);
-	        alert("관광지를 저장완료했습니다.");
+	        route();
 		}
 		
 		
@@ -489,7 +521,7 @@
 		}
 		
 		function removeMarker(){
-			
+			/* 			
 				for(var i in start_markerList){
 					start_markerList[i].setMap(null);
 				}
@@ -522,12 +554,12 @@
 				end_markerList=[];
 				document.getElementById('dp_name').value = null;
 				document.getElementById('dp_ny').value = null;
-				document.getElementById('dp_nx').value = null;
+				document.getElementById('dp_nx').value = null; */
 			
-			
+			location.reload(true);	
 		}
 		
-		function plusWay_02() {
+	function plusWay_02() {
 			document.querySelector(".tour2").style.display = 'block';
 		}
 		function plusWay_03() {
@@ -544,7 +576,9 @@
 			document.getElementById('t_name3').value=null;
 			document.getElementById('t_ny3').value=null;
 			document.getElementById('t_nx3').value=null;
-		}
+			
+			} 
+					
 		
 	</script>
 

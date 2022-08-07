@@ -16,10 +16,9 @@
 		location.href="register";
 	};
 	
-	function loginfalse(){
-		alert("로그인 실패");			
-		window.history.back();		/* 뒤로가기*/
-	}
+	/* function loginfalse(){
+		alert("로그인 실패");	
+	} */
 	  
 </script>
 <body>
@@ -56,7 +55,7 @@
                     </div>
                     </c:if>
                     <c:if test="${msg == false}">
-						<script> loginfalse(); </script>
+						<script> alert("로그인실패"); </script>
 					</c:if>
                 </form>
                 <h3>With Social Media</h3>

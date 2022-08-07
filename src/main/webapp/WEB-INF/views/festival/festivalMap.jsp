@@ -11,8 +11,8 @@
         	var map = new Tmapv2.Map("map_div2",  
         	{
         		center: new Tmapv2.LatLng(${read.f_ny},${read.f_nx}), 
-        		width: "890px",
-        		height: "400px",
+        		width: "550px",
+        		height: "700px",
         		zoom: 15
         	});
         	 

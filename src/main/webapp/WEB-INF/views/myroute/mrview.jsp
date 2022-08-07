@@ -10,9 +10,10 @@
 <meta charset="UTF-8">
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<title>Insert title here</title>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<link rel = "stylesheet" href="/resources/css/style_mrlist2.css">
+<title>KoneyGram</title>
     <script>
  	$(document).ready(function(){
 		getreplylist();
@@ -166,55 +167,107 @@
 	
 </script>
 </head>
-<body>
-<div class="container">
-	<h3>작성자 : ${read.userId }</h3>
-	<h1>${read.title }</h1>
-	<table border = "1">
-		<tr>
-			<th>출발지 이름</th>
-			<th>글 내용</th>
-			<th>조회수</th>
-		</tr>
-		
-			<tr>
-				<td>${read.dp_name }</td>
-				<td>${read.contents }</td>
-				<td>${read.hit }</td>
-			</tr>
-	</table>
-	<h4>첫번째 여행지 : ${read.t_name1 } </h4>
-	<img alt="간단여행사진" src="/resources/images/tour_pic/${read.t_name1 }.jpg" width=100, height=100 onclick="moveMap(${read.t_nx1}, ${read.t_ny1})">
-	<h4>두번째 여행지 : ${read.t_name2 }</h4>
-	<img alt="간단여행사진" src="/resources/images/tour_pic/${read.t_name2 }.jpg" width=100, height=100 onclick="moveMap(${read.t_nx2}, ${read.t_ny2})">
-	<h4>세번째 여행지 : ${read.t_name3 }</h4>
-	<img alt="간단여행사진" src="/resources/images/tour_pic/${read.t_name3 }.jpg" width=100, height=100 onclick="moveMap(${read.t_nx3}, ${read.t_ny3})">
-	 <div id="map_div">
-        </div>
-        
-    <div class="container">
-	  <div class="col-md-6">
-	  <!-- 	<label for="reply_writer"> 작성자 : </label>
-	  	<input type="text" class="form_control" id="mr_writer" name="mr_writer"><br/> -->
-	  	<label for="reply_content"> 댓글 내용: </label>
-	  	<c:choose>
+<body style="margin-left:350px;">
+
+<%@ include file="../menu/menu1.jsp" %>
+<div class="contents" style="display:flex; margin-top:20px;">
+	<div class="left_contents" style="width: 30%;">
+	<div class="container">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="/myroute/mrlist">list</a></li>
+		  <li class="breadcrumb-item active">Story</li>
+		</ol>
+		<span>${read.userId } 의</span>
+		<h4>${read.title }</h4>
+			<%-- <span>글 내용 ${read.contents }</span> --%>
+			<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+			  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+			  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+			</svg>${read.hit }</span>
+			<span>
+			<c:choose>
 		    <c:when test="${likeCheck eq '0' or empty likeCheck}"> <!-- likecheck가0이면 빈하트-->
 		        <a id="heart"><img id="click_h" src='<c:url value="/resources/images/blank_heart.png"/>' style="cursor:pointer; width: 20px;"></a>
 		    </c:when>
 		    <c:otherwise> <!-- likecheck가1이면 빨간 하트-->
 		        <a id="heart"><img id="click_h" src='<c:url value="/resources/images/full_heart.png"/>' style="cursor:pointer; width: 20px;"></a>
 		    </c:otherwise>
-		</c:choose>
-		</span>
-		<p>좋아요 수 : ${read.like_count}</p>
+			</c:choose>
+			${read.like_count}</span>
+		<div class="card border-primary mb-3" style="max-width: 20rem;">
+		  <div class="card-header"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+			  <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+			  <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+			  <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+		  </svg></div>
+		  <div class="card-body">
+		    <p class="card-text">${read.contents }</p>
+		  </div>
+		</div>
+		<div class="accordion" id="accordionExample">
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingOne">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+		        첫번째 여행지 : ${read.t_name1 } 
+		      </button>
+		    </h2>
+		    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+		      <div class="accordion-body">
+		      	<img alt="간단여행사진" src="/resources/images/tour_pic/${read.t_name1 }.jpg" width=100, height=100 onclick="moveMap(${read.t_nx1}, ${read.t_ny1})">
+		      	<br/>
+		      	${read.t_intro1 }
+		      </div>
+		    </div>
+		  </div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingTwo">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		        두번째 여행지 : ${read.t_name2 }
+		      </button>
+		    </h2>
+		    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
+		      <div class="accordion-body">
+		      	<img alt="간단여행사진" src="/resources/images/tour_pic/${read.t_name2 }.jpg" width=100, height=100 onclick="moveMap(${read.t_nx2}, ${read.t_ny2})">
+		      	<br/>
+		      	${read.t_intro2 }
+		      </div>
+		    </div>
+		  </div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingThree">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		        세번째 여행지 : ${read.t_name3 }
+		      </button>
+		    </h2>
+		    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="">
+		      <div class="accordion-body">
+		      	<img alt="간단여행사진" src="/resources/images/tour_pic/${read.t_name3 }.jpg" width=100, height=100 onclick="moveMap(${read.t_nx3}, ${read.t_ny3})">
+		      	<br/>
+		      	${read.t_intro3 }
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	</div>
+	<div class="right_contents">
+		<div id="map_div">
+        </div>
+    </div>
+</div>
+<div class="reply_box">
+    <div class="container">
+	  <div class="col-md-6" style="width: 780px;">
+	  <hr/>
+	  <!-- 	<label for="reply_writer"> 작성자 : </label>
+	  	<input type="text" class="form_control" id="mr_writer" name="mr_writer"><br/> -->
+	  	<label for="reply_content"> 댓글 내용: </label>
 	  	<textarea class="form-control" id="mr_content" name="mr_content"></textarea>
 	  	<c:if test="${user != null}">
 		  	<button type="button" class = "btn btn-outline-success" id="replywriteBtn">댓글 작성</button>
 		</c:if>
 	  </div>
 		<br/>
-		<hr/>	  
-	
 		<div class="container">
 			<div id="mrlist"></div>
 		</div>
@@ -229,8 +282,8 @@
 	function initTmap(){
 		map = new Tmapv2.Map("map_div",{
 			center:	 new Tmapv2.LatLng(m_ny, m_nx),
-			width : "600px",
-			height : "600px",
+			width : "400px",
+			height : "400px",
 			zoom: 10
 		});
 	

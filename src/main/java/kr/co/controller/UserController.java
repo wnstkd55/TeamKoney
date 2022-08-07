@@ -72,12 +72,14 @@ public class UserController {
 		
 		if(login == null) {
 			session.setAttribute("user", null);
-			rttr.addFlashAttribute("user",false);
+			rttr.addFlashAttribute("msg",false);
+			return "/user/login";
 		}else {
 			session.setAttribute("user", login);
+			return "redirect:/";
 		}
 		
-		return "redirect:/";
+		
 	}
 	
 	// 로그아웃

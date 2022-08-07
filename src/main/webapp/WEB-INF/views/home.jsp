@@ -28,15 +28,11 @@
 			location.href="user/adminlist";
 		})
 	})
-	function loginfalse(){
-		alert("로그인 실패");			
-		window.history.back();		/* 뒤로가기*/
-	}	
+	
 </script>
-<body>
-<div class = "menu" style="float: left;">
+
+<body style="margin-left:350px;">
 <%@ include file="menu/menu1.jsp" %>
-</div>
 <div class="container py-4">
     <header class="pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">

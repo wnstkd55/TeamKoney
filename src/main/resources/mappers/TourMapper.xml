@@ -82,10 +82,10 @@
 	</select>
 
 	<insert id="saveroute">
-		INSERT INTO MY_ROUTE(MR_ID, TITLE, DP_NAME, DP_NY, DP_NX, T_NAME1, T_NY1, T_NX1, T_NAME2, T_NY2, T_NX2, T_NAME3, T_NY3, T_NX3, EP_NAME, EP_NY, EP_NX, CONTENTS, USERID)
+		INSERT INTO MY_ROUTE(MR_ID, TITLE, DP_NAME, DP_NY, DP_NX, T_NAME1, T_NY1, T_NX1, T_NAME2, T_NY2, T_NX2, T_NAME3, T_NY3, T_NX3, EP_NAME, EP_NY, EP_NX, CONTENTS, USERID,T_INTRO1,T_INTRO2,T_INTRO3)
 		VALUES(MYROUTE_SEQ.NEXTVAL, #{title}, #{dp_name}, #{dp_ny},#{dp_nx}
 		,#{t_name1},#{t_ny1},#{t_nx1},#{t_name2},#{t_ny2},#{t_nx2},#{t_name3},#{t_ny3},#{t_nx3}
-		,#{ep_name},#{ep_ny},#{ep_nx},#{contents},#{userId})
+		,#{ep_name},#{ep_ny},#{ep_nx},#{contents},#{userId},#{t_intro1},#{t_intro2},#{t_intro3})
 	</insert>
 
 </mapper>

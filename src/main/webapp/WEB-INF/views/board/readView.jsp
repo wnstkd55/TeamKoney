@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<title>게시판</title>
+		<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+	 	<title>KoneyGram</title>
 	</head>
 	
 	<script type="text/javascript">
@@ -70,19 +71,15 @@
 		})
 	</script>
 	
-	<body>
-	
+	<body style="margin-left:350px;">
+		<%@ include file="../menu/menu1.jsp" %>
+		
 		<div id="root">
-			<header>
-				<h1> 게시판</h1>
-			</header>
 			<hr />
-			 
 			<div>
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
-			
 			<section id="container">
 				<form name="readForm" role="form" method="post">
 				  <input type="hidden" id="bno" name="bno" value="${read.bno}" >
@@ -116,7 +113,7 @@
 						</tr>		
 					</tbody>			
 				</table>
-				<c:if test="${user.userId eq read.userId || user.userId eq 'admin'}">
+				<c:if test="${(user.userId eq read.userId || user.userId eq 'admin') && user.userId != null}">
 					<div>
 						<button type="submit" class="update_btn">수정</button>
 						<button type="submit" class="delete_btn">삭제</button>
@@ -145,7 +142,6 @@
 					    </c:forEach>   
 					</ol>
 				</div>
-				
 				<form name="replyForm" method="post">
 					<input type="hidden" id="bno" name="bno" value="${read.bno}" />
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 
@@ -164,7 +160,6 @@
 						</div>
 					</c:if>
 				</form>
-				
 			</section>
 			<hr />
 		</div>

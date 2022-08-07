@@ -12,8 +12,8 @@
 	 	
 	</head>
 	<body>
-	<form name = "mapForm" style="width: 1000px; margin-left: 400px;">
-		<svg style='background:#ffffff;overflow:visible' height="1107" width="800" xmlns="http://www.w3.org/2000/svg">
+	<form name = "mapForm" style="width: 530px;margin-left: 350px;">
+		<svg style='background:#ffffff;overflow:visible' width="500px" height="100%" viewBox="0 0 800 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 			<defs>
 			    <filter id="dropshadow">
 			        <feGaussianBlur in="SourceAlpha" stdDeviation="3" />

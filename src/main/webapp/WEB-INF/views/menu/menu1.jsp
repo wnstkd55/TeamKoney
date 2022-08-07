@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-<link href='/resources/css/style.css' rel="stylesheet" type='text/css' media='screen'>
+<link href='/resources/css/menu3.css' rel="stylesheet" type='text/css' media='screen'>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 
 	<title>KoneyGram</title>
 </head>
@@ -33,10 +34,10 @@
                         <span>${user.userIntro }</span>
                         <br/>
 				      	<c:if test="${user.userId == 'admin' }">
-				   			<a href="/user/adminlist">회원관리</a>
+				   			<a href="/user/adminlist"><button type="button" class="btn btn-outline-secondary">회원관리</button></a>
 				    	</c:if>
 				    	<c:if test="${user.userId !='admin' }">
-				   			<a href="/user/mypage">마이페이지</a>
+				   			<a href="/user/mypage"><button type="button" class="btn btn-outline-secondary">마이페이지</button></a>
 				    	</c:if>
                     </div>
                </c:if>
@@ -83,13 +84,13 @@
                 <b></b>
                <c:if test="${user == null}">
                 <a href="/user/login">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
                     <span class="title">Login</span>
                 </a>
                 </c:if>
                     <c:if test="${user != null}">
                 <a href="/user/logout">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                     <span class="title">Logout</span>
                 </a>
                 </c:if>

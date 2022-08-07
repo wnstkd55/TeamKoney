@@ -1,0 +1,18 @@
+
+.container{
+	margin-top:20px;
+	display:flex;
+}
+
+table{
+	table-layout:fixed;
+}
+
+td{
+	word-wrap:break-word;
+}
+
+.left_content{
+	width: 30%;
+	float:left;
+}

@@ -58,7 +58,7 @@ create table mp_reply (
     primary key(bno, rno)
 );
 
-drop table mp_reply;
+
 
 --외래키 설정
 alter table mp_reply add constraint mp_reply_bno foreign key(bno)
@@ -69,7 +69,7 @@ COMMIT;
 
 --댓글 번호 시퀀스 생성
 create sequence mp_reply_seq START WITH 1 MINVALUE 0;
-drop sequence mp_reply_seq;
+
 --댓글 더미 데이터 생성
 insert into mp_reply(bno, rno, content, writer)
     values(418, mp_reply_seq.nextval, '테스트댓글', '테스트 작성자');
@@ -81,6 +81,7 @@ select rno, content, writer, regdate
 
 --SID번호 확인
 select name from v$database;
+
 
 -----------------------------------------------------
 
@@ -116,18 +117,6 @@ commit;
 select * from tours;		--관광지
 alter table tours add constraint pk_t_id primary key (t_id);
 
-create table my_tourroute(	-- 여행루트 테이블
-    tr_id varchar2(30) primary key,
-    tr_title varchar2(100) not null,
-    tr_date varchar2(100),
-    dp_id varchar2(30) not null,
-    arr_id varchar2(30) not null,
-    t_id number not null,
-    userId varchar2(50) not null
-);
-
-alter table my_tourroute add tr_content varchar2(2400);
-
 /* 외래키 작업*/
 
 ALTER TABLE my_tourroute
@@ -136,7 +125,6 @@ ADD CONSTRAINT fk_t_id foreign KEY(t_id) references tours (t_id);
 ALTER TABLE my_tourroute
 ADD CONSTRAINT fk_userid foreign KEY(userid) references users (userid) on delete cascade;
 
-drop table my_tourroute;
 
 --행정구역 테이블
 create table city(
@@ -198,6 +186,10 @@ create table my_route(
     hit number	--조회수
 );
 
+alter table my_route add t_intro1 VARCHAR2(2400);
+alter table my_route add t_intro2 VARCHAR2(2400);
+alter table my_route add t_intro3 VARCHAR2(2400);
+
 
 commit;
 
@@ -241,6 +233,8 @@ create table heart(
     constraint fk_mlid foreign key(userid) references users(userid) on delete cascade,
     constraint fk_mlbid foreign key(mr_id) references my_route(mr_id) on delete cascade
 );   
+-- 경로게시물 좋아요수 컬럼 추가
+alter table my_route add like_count number default 0;
 
 -- 좋아요 시퀀스
 create sequence mrlike_seq
@@ -251,3 +245,26 @@ create sequence mrlike_seq
     nocache
     noorder
     nocycle;
+    
+-- 프로필사진
+CREATE TABLE MP_FILE
+(
+    FILE_NO NUMBER,                         --파일 번호
+    userId VARCHAR2(50) NOT NULL,                    --게시판 번호
+    ORG_FILE_NAME VARCHAR2(260) NOT NULL,   --원본 파일 이름
+    STORED_FILE_NAME VARCHAR2(36) NOT NULL, --변경된 파일 이름
+    FILE_SIZE NUMBER,                       --파일 크기
+    DEL_GB VARCHAR2(1) DEFAULT 'N' NOT NULL,--삭제구분
+    PRIMARY KEY(FILE_NO)                    --기본키 FILE_NO
+);
+
+CREATE SEQUENCE SEQ_MP_FILE_NO
+START WITH 1 
+INCREMENT BY 1 
+NOMAXVALUE NOCACHE;
+
+ALTER TABLE mp_file
+ADD CONSTRAINT uk_STORED_FILE_NAME unique(STORED_FILE_NAME);
+
+alter table users add STORED_FILE_NAME VARCHAR2(36);
+desc users;

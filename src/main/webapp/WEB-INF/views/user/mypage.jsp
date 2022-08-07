@@ -4,13 +4,11 @@
 
 <html>
 <head>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+ 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+ 	<link rel='stylesheet' type='text/css' media='screen' href='/resources/css/mypage.css'>
 </head>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -23,11 +21,27 @@
 	})
 </script>
 <body>
-
-		<p>${user.userId}님 환영 합니다.</p>
-		<p>${user.userIntro}</p>
-		<button id="userUpdateBtn" type="button">회원정보수정</button>
-		<button id="userDeleteBtn" type="button">회원탈퇴</button>
+<div class = "menu">
+<%@ include file="../menu/menu1.jsp" %>
+</div>
+	<div class="card">
+        <div class="imgbx">
+            <img src="/resources/upload/${user.stored_file_name}" alt="userimage">
+        </div>
+        <div class="content">
+            <div class="details">
+                <h2>${user.userId}<br><span>${user.userIntro}</span></h2>
+                <div class="data">
+                    <h3>342<br><span>게시된 일정수</span></h3>
+                    <h3>285<br><span>받은 좋아요수</span></h3>
+            </div>
+            <div class="actionBtn">
+                <button id="userUpdateBtn" type="button">회원정보수정</button>
+                <button id="userDeleteBtn" type="button">회원탈퇴</button>
+            </div>
+        	</div>
+    	</div>
+    </div>
 
 </body>
 </html>

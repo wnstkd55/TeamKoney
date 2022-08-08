@@ -3,13 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	 	
 	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<title>회원가입</title>
+	 	<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+		<title>KoneyGram</title>
 	</head>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -53,40 +49,43 @@
 			
 		})
 	</script>
-	<body>
-		<section id="container">
-			<form action="/user/userUpdate" method="post">
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userId">아이디</label>
-					<input class="form-control" type="text" id="userId" name="userId" value="${user.userId}" readonly="readonly"/>
-				</div>
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userPwd">패스워드</label>
-					<input class="form-control" type="password" id="userPwd" name="userPwd" />
-				</div>
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">성명</label>
-					<input class="form-control" type="text" id="userName" name="userName" value="${user.userName}"/>
-				</div>
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userAge">나이</label>
-					<input class="form-control" type="text" id="userAge" name="userAge" value="${user.userAge}"/>
-				</div>
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userEmail">이메일</label>
-					<input class="form-control" type="text" id="userEmail" name="userEmail" value="${user.userEmail}"/>
-				</div>
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userIntro">자기소개</label>
-					<input class="form-control" type="text" id="userIntro" name="userIntro" value="${user.userIntro}"/>
-				</div>
-				<div class="form-group has-feedback">
-					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
-					<button class="cencle btn btn-danger" type="button">취소</button>
-				</div>
-			</form>
-		</section>
-		
+	<body style="margin-left:350px;">
+	<%@ include file="../menu/menu1.jsp" %>
+		<div class="container" style="margin-top:50px;">
+		<div class="card border-primary mb-3" style="max-width: 20rem;">
+		  <div class="card-header">회원정보수정</div>
+		  <div class="card-body">
+		    <h4 class="card-title">${user.userId}의 회원정보</h4>
+		    <p class="card-text">
+		    	<form action="/user/userUpdate" method="post">
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userPwd">패스워드</label>
+						<input class="form-control" type="password" id="userPwd" name="userPwd" />
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userName">성명</label>
+						<input class="form-control" type="text" id="userName" name="userName" value="${user.userName}"/>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userAge">나이</label>
+						<input class="form-control" type="text" id="userAge" name="userAge" value="${user.userAge}"/>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userEmail">이메일</label>
+						<input class="form-control" type="text" id="userEmail" name="userEmail" value="${user.userEmail}"/>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userIntro">자기소개</label>
+						<input class="form-control" type="text" id="userIntro" name="userIntro" value="${user.userIntro}"/>
+					</div>
+					<div class="form-group has-feedback">
+						<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
+						<button class="cencle btn btn-danger" type="button">취소</button>
+					</div>
+				</form>
+		    </p>
+		  </div>
+		</div>
+		</div>
 	</body>
-	
 </html>

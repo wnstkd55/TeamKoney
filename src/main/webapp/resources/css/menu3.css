@@ -12,11 +12,10 @@ body{
   
 }
 
-
 .navigation{
     position: fixed;
     inset: 20px;
-    background: rgba(255, 255, 255, 0.236);
+    background: #78c2ad;
     backdrop-filter: blur(10px);
     width: 80px;
     border-left: 10px solid rgba(102, 102, 102, 0.577);

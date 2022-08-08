@@ -20,10 +20,8 @@
 
 </head>
 <body>
-<div id ="nav">
-		<%@ include file="../menu/menu1.jsp" %>
-	</div>
-<main style="margin-top: 100px;margin-left: 350px; padding-left:100px; margin-right:100px;padding-left: 0px;">
+	<%@ include file="../menu/menu1.jsp" %>
+<main style="margin-top: 20px;margin-left: 350px; padding-left:100px; margin-right:100px;padding-left: 0px;">
   <div class="header" >
   	<div class= "container" style="text-align:center;">
       	<c:if test="${user != null}">
@@ -31,6 +29,9 @@
 		</c:if>
         <h1 class="fw-light">여행할 도시를 선택해 주세요!</h1>
         <p class="lead text-muted">가고싶은 광역시, 도를 골라주시면 해당지역의 관광지역을 보여줍니다</p>
+        <ol class="breadcrumb">
+	  		<li class="breadcrumb-item active">1. 도시 선택</li>
+		</ol>
       </div>
    </div>
   <div class="album py-5 bg-light">

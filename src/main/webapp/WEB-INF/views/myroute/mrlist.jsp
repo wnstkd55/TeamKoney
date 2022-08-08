@@ -14,7 +14,10 @@
 	<div>
 		<%@ include file="../menu/menu1.jsp" %>
 	</div>
-	<div class="container" style="width: 1124px;"> 
+	<div class="container" style="width: 1124px;">
+	<div class="koney_story">
+					<img alt="koney_placeimg" src="/resources/images/contents/koney_story.jpg" style="width:100%;">
+	</div>
 	<div class="album py-5 bg-light">
 	      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 	      <c:forEach items="${list}" var="m">

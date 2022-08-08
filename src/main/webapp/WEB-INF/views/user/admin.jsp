@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<title>admin화면</title>
+		<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+	 	<title>KoneyGram</title>
 	 	<style type="text/css">
 			li {list-style: none; float: left; padding: 6px;}
 		</style>
@@ -27,13 +28,10 @@
 			}
 		})
 	})
-	
-	
-	
 	</script>
-	
-	<body>
-		<div id="root">
+	<body style="margin-left:350px;">
+	<%@ include file="../menu/menu1.jsp" %>
+		<div class="container">
 			<header>
 				<h1> admin화면</h1>
 			</header>
@@ -60,10 +58,9 @@
 										<td><c:out value="${adminlist.userEmail}" /></td>
 										<form name = "listUser">
 											<input type = "hidden" name = "userId" value = "${adminlist.userId}"/>
-											<td><button class = "delete_btn" type = "submit" > 회원삭제</button></td>
+											<td><button class = "delete_btn btn btn-danger" type = "submit" > 회원삭제</button></td>
 										</form>
 									</tr>
-								
 								</c:forEach>
 						</tbody>
 					</table>

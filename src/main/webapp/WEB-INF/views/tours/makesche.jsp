@@ -19,8 +19,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>KoneyGram</title>
+<style>
+body{
+	background:#fff;
+}
+</style>
 </head>
-<body onload="initTmap()" style="margin-top: 100px; margin-left:100px; padding-left:100px; margin-right:100px; padding-left:100px;">
+<body onload="initTmap()" style="margin-top: 20px; margin-left:350px;">
 	<%
 		String cityname = request.getParameter("c_name");
 		String ny = null;
@@ -32,15 +37,33 @@
 		double m_nx = Double.parseDouble(nx);
 	%>
 <%@ include file="../menu/menu1.jsp" %>
-  <div class="container" style="margin-left: 200px; width: 1024px;">
+  <div class="container" style="width: 1024px;">
   	<div class= "title">
         <h1><%=cityname %>지역에서 선택해 주세요!</h1>
         <p>관광지를 보여드립니다!</p>
     </div>
-		<div class="contents">
+    <ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="/tours/tour">1. 도시 선택</a></li>
+	  <li class="breadcrumb-item active">2. 일정 짜기</li>
+	</ol>
+		<div class="contents" style="background:rgba(231, 229, 229, 0.573);">
 			<div class = "left_items" style="width:100%;">
 			<c:if test="${user != null}">
-				<h4>${user.userId}님의 일정 만들기</h4>
+				<span>
+					<h5>${user.userId}님의 일정 만들기</h5>
+					<div class="buttongroup" style="float:right;">
+						<button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="마커 초기화" onclick="removeMarker();">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+							  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+							</svg>
+						</button>
+						<button class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="경로 보기" onclick="addpass();">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
+							  <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z"/>
+							</svg>
+						</button>
+					</div>
+				</span>
 			</c:if>
 				<div class ="make_sche">
 				<form name = "routeForm" action = "/tours/saveTour" method="post">
@@ -132,16 +155,6 @@
 						</c:if>
 						</form>
 					</div>
-					<button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="마커 초기화" onclick="removeMarker();">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-						  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-						</svg>
-					</button>
-					<button class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="경로 보기" onclick="addpass();">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
-						  <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z"/>
-						</svg>
-					</button>
 			</div>
 			<div class = "map">
 				<div id = "map_div"></div>
@@ -183,8 +196,8 @@
 		function initTmap(){
 			map = new Tmapv2.Map("map_div",{
 				center:	 new Tmapv2.LatLng(m_ny, m_nx),
-				width : "600px",
-				height : "942px",
+				width : "550px",
+				height : "750px",
 				zoom: 10
 			});
 		};

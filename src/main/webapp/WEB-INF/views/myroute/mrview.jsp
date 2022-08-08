@@ -283,7 +283,7 @@
 		map = new Tmapv2.Map("map_div",{
 			center:	 new Tmapv2.LatLng(m_ny, m_nx),
 			width : "400px",
-			height : "400px",
+			height : "615px",
 			zoom: 10
 		});
 	

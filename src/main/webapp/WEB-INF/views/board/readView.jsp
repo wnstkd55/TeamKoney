@@ -74,12 +74,15 @@
 	<body style="margin-left:350px;">
 		<%@ include file="../menu/menu1.jsp" %>
 		
-		<div id="root">
-			<hr />
-			<div>
-				<%@include file="nav.jsp" %>
+		<div class="container" style="width:1000px;">
+			<div class="koney_place">
+				<img alt="koney_placeimg" src="/resources/images/contents/koney_place.jpg" style="width:100%;">
 			</div>
-			<hr />
+			<br/>
+			<ol class="breadcrumb">
+			  <li class="breadcrumb-item"><a href="/board/list">List</a></li>
+			  <li class="breadcrumb-item active">View</li>
+			</ol>
 			<section id="container">
 				<form name="readForm" role="form" method="post">
 				  <input type="hidden" id="bno" name="bno" value="${read.bno}" >
@@ -88,7 +91,39 @@
 				  <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" > 
 				  <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}" > 
 				</form>
-				<table>
+				<table class="table">
+					<colgroup>
+						<col width="15%"/>
+						<col width="35%"/>
+						<col width="15%"/>
+						<col width="35%"/>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">글 번호</th>
+							<td>${read.bno}</td>
+							<th scope="row">조회수</th>
+							<td>${read.hit}</td>
+						</tr>
+						<tr>
+							<th scope="row">작성자</th>
+							<td>${read.writer}</td>
+							<th scope="row">작성일</th>
+							<td><fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd" /></td>
+						</tr>
+						<tr>
+							<th scope="row">제목</th>
+							<td colspan="3">${read.title}</td>
+						</tr>
+						<tr>
+							<td colspan="4" class="view_text" style="margin-left:20px; margin-right:20px; height: 300px; background:#f6f6f6;">
+								<c:out value="${read.content}" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<%-- <table>
 					<tbody>
 						<tr>
 							<td>
@@ -112,15 +147,19 @@
 							</td>
 						</tr>		
 					</tbody>			
-				</table>
+				</table> --%>
+				
+				
 				<c:if test="${(user.userId eq read.userId || user.userId eq 'admin') && user.userId != null}">
-					<div>
-						<button type="submit" class="update_btn">수정</button>
-						<button type="submit" class="delete_btn">삭제</button>
-						<button type="submit" class="list_btn">목록</button>	
+					<div class="btn-group btn-group-sm" role="group" style="float:right;">
+						<button type="submit" class="list_btn btn btn-outline-primary">목록</button>	
+						<button type="submit" class="update_btn btn btn-outline-info">수정</button>
+						<button type="submit" class="delete_btn btn btn-outline-danger">삭제</button>
 					</div>
 				</c:if>
-				
+				<br/>
+				<br/>
+				<hr/>
 				<!-- 댓글 -->
 				<div id="reply">
 					<ol class="replyList">
@@ -133,9 +172,9 @@
 						
 						        <p>${replyList.content}</p>
 						        <c:if test="${user.userId eq 'admin'}">
-							        <div>
-										<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-										<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
+							        <div class="btn-group btn-group-sm" role="group">
+										<button type="button" class="replyUpdateBtn btn btn-outline-info" data-rno="${replyList.rno}">수정</button>
+										<button type="button" class="replyDeleteBtn btn btn-outline-danger" data-rno="${replyList.rno}">삭제</button>
 									</div>
 								</c:if>
 					    	</li>
@@ -154,9 +193,7 @@
 						    <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" />
 						    <br/>
 						    <label for="content">댓글 내용</label><input type="text" id="content" name="content" />
-						</div>
-						<div>
-						 	 <button type="button" class="replyWriteBtn">작성</button>
+						    <button type="button" class="replyWriteBtn btn btn-outline-primary">작성</button>
 						</div>
 					</c:if>
 				</form>

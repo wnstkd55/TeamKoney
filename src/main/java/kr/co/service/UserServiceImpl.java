@@ -39,8 +39,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void userUpdate(UsersVO vo) throws Exception {
+	public void userUpdate(UsersVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(vo, mpRequest);
+		int size = list.size();
+		for(int i=0; i<size; i++) {
+			dao.insertFile(list.get(i));
+		}
+		
 		dao.userUpdate(vo);
+		
 	}
 
 	@Override

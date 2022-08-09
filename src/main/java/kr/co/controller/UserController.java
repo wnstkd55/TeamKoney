@@ -96,8 +96,8 @@ public class UserController {
 	}
 	// 회원정보수정 post
 	@RequestMapping(value = "userUpdate", method = RequestMethod.POST)
-	public String registerUpdate(UsersVO vo, HttpSession session) throws Exception{
-		service.userUpdate(vo);
+	public String registerUpdate(UsersVO vo, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
+		service.userUpdate(vo, mpRequest);
 		session.invalidate();
 		
 		return "redirect:/";

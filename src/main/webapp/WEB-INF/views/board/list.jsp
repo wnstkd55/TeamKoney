@@ -60,7 +60,12 @@
 						</c:forEach>
 						
 					</table>
-					
+					<c:if test="${user.userId != null}">
+						<button type="button" class="btn btn-success" onclick="location.href='/board/writeView';" style="float:right;">글작성</button>
+					</c:if>
+					<br/>
+					<br/>
+					<hr/>
 					<div>
 						<ul class="pagination" style="margin-left:50px;">
 						    <c:if test="${pageMaker.prev}">

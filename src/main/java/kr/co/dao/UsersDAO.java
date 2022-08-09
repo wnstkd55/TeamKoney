@@ -30,4 +30,6 @@ public interface UsersDAO {
 
 	void insertFile(Map<String, Object> map) throws Exception;
 	
+	public void updateFile(Map<String, Object> map) throws Exception;
+	
 }

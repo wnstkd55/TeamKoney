@@ -77,13 +77,13 @@
 					<div>
 						<ul class="pagination" style="margin-left:50px;">
 						    <c:if test="${pageMaker.prev}">
-						    	<li class="page-item"><a class="page-link" href="listfByAdmin${pageMaker.makeSearch(pageMaker.startPage - 1)}&f_admin=${list[0].f_admin }}">이전</a></li>
+						    	<li class="page-item"><a class="page-link" href="listfByAdmin${pageMaker.makeSearch(pageMaker.startPage - 1)}&f_admin=${list[0].f_admin }}"><<</a></li>
 						    </c:if> 
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 						    	<li class="page-item active"><a class="page-link"href="listfByAdmin${pageMaker.makeSearch(idx)}&f_admin=${list[0].f_admin }">${idx}</a></li>
 						    </c:forEach>
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						    	<li class="page-item"><a class="page-link" href="listfByAdmin${pageMaker.makeSearch(pageMaker.endPage + 1)}&f_admin=${list[0].f_admin }">다음</a></li>
+						    	<li class="page-item"><a class="page-link" href="listfByAdmin${pageMaker.makeSearch(pageMaker.endPage + 1)}&f_admin=${list[0].f_admin }">>></a></li>
 						    </c:if> 
 						</ul>
 					</div>

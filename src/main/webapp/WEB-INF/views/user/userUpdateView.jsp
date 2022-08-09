@@ -57,7 +57,11 @@
 		  <div class="card-body">
 		    <h4 class="card-title">${user.userId}의 회원정보</h4>
 		    <p class="card-text">
-		    	<form action="/user/userUpdate" method="post">
+		    	<form action="/user/userUpdate" method="post" enctype="multipart/form-data">
+		    		<div class="form-group has-feedback">
+						<label class="control-label" for="userId">아이디</label>
+						<input class="form-control" type="text" id="userId" name="userId" value="${user.userId}" readonly="readonly"/>
+					</div>
 					<div class="form-group has-feedback">
 						<label class="control-label" for="userPwd">패스워드</label>
 						<input class="form-control" type="password" id="userPwd" name="userPwd" />
@@ -77,6 +81,10 @@
 					<div class="form-group has-feedback">
 						<label class="control-label" for="userIntro">자기소개</label>
 						<input class="form-control" type="text" id="userIntro" name="userIntro" value="${user.userIntro}"/>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="pFile">프로필 사진</label>
+						<input class="form-control" type="file" id="pFile" name="pFile" value="${user.stored_file_name}"/>
 					</div>
 					<div class="form-group has-feedback">
 						<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>

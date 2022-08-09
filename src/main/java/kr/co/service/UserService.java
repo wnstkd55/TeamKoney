@@ -15,7 +15,7 @@ public interface UserService {
 	public UsersVO login(UsersVO vo) throws Exception;
 	
 	// 회원정보수정
-	public void userUpdate(UsersVO vo) throws Exception;
+	public void userUpdate(UsersVO vo, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	// 회원탈퇴
 	public void userDelete(UsersVO vo) throws Exception;

@@ -38,7 +38,9 @@
 		USERNAME = #{userName},
 		USERAGE = #{userAge},
 		USEREMAIL = #{userEmail},
-		USERINTRO = #{userIntro}
+		USERINTRO = #{userIntro},
+		STORED_FILE_NAME = (SELECT STORED_FILE_NAME FROM MP_FILE WHERE (SELECT MAX(FILE_NO) FROM MP_FILE WHERE USERID = #{userId}) = FILE_NO)
+		WHERE USERID = #{userId}
 	</update>
 	
 	<!-- 회원탈퇴 -->

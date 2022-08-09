@@ -44,10 +44,8 @@
 	<div class="container" style="width:1000px; text-align:center;">
 		<div class="card mb-3" style="width:600px; height: 800px;">
 		  <h3 class="card-header">MyPage</h3>
-		  <div class="card-body">
 		    <h5 class="card-title">${user.userId} 님 환영합니다!</h5>
-		  </div>
-		  <img class="d-block user-select-none"  role="img" style="font-size:1.125rem;text-anchor:middle; width:300px; height:300px;" src="/resources/upload/${user.stored_file_name}" alt="userimage"/>
+		  <img class="d-block user-select-none"  role="img" style="font-size:1.125rem;text-anchor:middle; width:300px; height:300px; margin-left: 150px;margin-right: 0px;" src="/resources/upload/${user.stored_file_name}" alt="userimage"/>
 		  <div class="card-body">
 		  	<div class="accordion" id="accordionExample">
 			    <div class="accordion-item">

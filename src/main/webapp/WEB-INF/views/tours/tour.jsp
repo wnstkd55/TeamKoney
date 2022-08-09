@@ -24,19 +24,16 @@
 <main style="margin-top: 20px;margin-left: 350px; padding-left:100px; margin-right:100px;padding-left: 0px;">
   <div class="header" >
   	<div class= "container" style="text-align:center;">
-      	<c:if test="${user != null}">
-			<h2>${user.userId}님 안녕하세요.</h2>
-		</c:if>
-        <h1 class="fw-light">여행할 도시를 선택해 주세요!</h1>
-        <p class="lead text-muted">가고싶은 광역시, 도를 골라주시면 해당지역의 관광지역을 보여줍니다</p>
         <ol class="breadcrumb">
 	  		<li class="breadcrumb-item active">1. 도시 선택</li>
 		</ol>
       </div>
    </div>
   <div class="album py-5 bg-light">
-    <div class="container">
-
+    <div class="container" style="width:1000px;">
+		<div class="banner" style="margin-bottom:20px;">
+			<img alt="koney_scheduler" src="/resources/images/contents/koney_scheduler.jpg" style="width:1000px;">
+		</div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       	<%
 			CityDAO citydao = new CityDAO();
@@ -53,9 +50,6 @@
           </div>
             <div class="card-body">
               <p class="card-text"><%=citylist.get(i).getC_name() %></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -65,9 +59,7 @@
        </div>
       </div>
   </div>
-
 </main>
-
 <footer class="text-muted py-5">
   <div class="container">
     <p class="float-end mb-1">
@@ -78,8 +70,6 @@
   </div>
 </footer>
 
-
-    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
   </body>
 </html>

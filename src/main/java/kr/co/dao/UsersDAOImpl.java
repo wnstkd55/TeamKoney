@@ -66,7 +66,11 @@ public class UsersDAOImpl implements UsersDAO{
 		sql.insert("userMapper.insertFile", map);
 	}
 	
-	
+	// 프로필 사진 수정
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception {
+		sql.update("userMapper.updateFile", map);
+	}
 	
 	
 }

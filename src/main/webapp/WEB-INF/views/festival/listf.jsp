@@ -75,9 +75,9 @@
 					</table>
 					
 					<div>
-						<ul class="pagination" style="margin-left:50px;">
+						<ul class="pagination">
 						    <c:if test="${pageMaker.prev}">
-						    	<li class="page-item"><a class="page-link" href="listf${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+						    	<li class="page-item"><a class="page-link" href="listf${pageMaker.makeSearch(pageMaker.startPage - 1)}"><<</a></li>
 						    </c:if> 
 						
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
@@ -85,7 +85,7 @@
 						    </c:forEach>
 						
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						    	<li class="page-item"><a class="page-link" href="listf${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+						    	<li class="page-item"><a class="page-link" href="listf${pageMaker.makeSearch(pageMaker.endPage + 1)}">>></a></li>
 						    </c:if> 
 						</ul>
 					</div>

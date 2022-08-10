@@ -201,7 +201,7 @@
 	        <td data-title="지번 주소" data-type="currency"><%=tlist.get(i).getT_gnumaddress() %></td>
 	        <td data-title="간단소개" data-type="currency"><%=tlist.get(i).getT_intro() %></td>
 	        <td data-title="전화번호" data-type="currency"><%=tlist.get(i).getT_tel() %></td>
-	      	<td data-title="관광지로 지정"><button onclick="selectTour('<%=tlist.get(i).getT_name() %>',<%=tlist.get(i).getT_ny() %>,<%=tlist.get(i).getT_nx() %>);">추가하기</button></td>
+	      	<td data-title="관광지로 지정"><button onclick="selectTour('<%=tlist.get(i).getT_name() %>',<%=tlist.get(i).getT_ny() %>,<%=tlist.get(i).getT_nx() %>,'<%=tlist.get(i).getT_intro() %>');">추가하기</button></td>
 	      	<td data-title="관광지 위도" id="t_ny" style="display:none"><%=tlist.get(i).getT_ny() %></td>
 	      	<td data-title="관광지 경도" id="t_nx" style="display:none"><%=tlist.get(i).getT_nx() %></td>
 	      </tr>
@@ -221,7 +221,7 @@
     
     var tag = <%=tag%>;
     
-	function selectTour(tourname,latitude,longitude){
+	function selectTour(tourname,latitude,longitude,intro){
 		
 		if(tag == '1'){
 			
@@ -230,7 +230,7 @@
 			window.opener.document.getElementById('t_name1').value = tourname;
 			window.opener.document.getElementById('t_ny1').value = latitude;	//위도
 			window.opener.document.getElementById('t_nx1').value = longitude;	//경도
-			
+			window.opener.document.getElementById('t_intro1').value=intro;	//관광지 설명
 			window.close();
 			
 		}else if(tag == '2'){
@@ -240,7 +240,7 @@
 			window.opener.document.getElementById('t_name2').value = tourname;
 			window.opener.document.getElementById('t_ny2').value = latitude;	//위도
 			window.opener.document.getElementById('t_nx2').value = longitude;	//경도
-			
+			window.opener.document.getElementById('t_intro2').value=intro;	//관광지 설명
 			window.close();
 		}else if(tag == '3'){
 			
@@ -249,7 +249,7 @@
 			window.opener.document.getElementById('t_name3').value = tourname;
 			window.opener.document.getElementById('t_ny3').value = latitude;	//위도
 			window.opener.document.getElementById('t_nx3').value = longitude;	//경도
-			
+			window.opener.document.getElementById('t_intro3').value=intro;	//관광지 설명
 			window.close();
 		}
 		

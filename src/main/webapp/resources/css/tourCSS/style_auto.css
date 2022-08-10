@@ -9,13 +9,12 @@
 }
 
 body{
-	background: linear-gradient(45deg,#6cf0ee,#ff5acd);
+	margin: 100px,0,0,0;
 }
 
 .flex-container{
 	display: flex;
  	flex-direction: column;
-  	height: 100%;
   	justify-content:flex-end;
 }
 

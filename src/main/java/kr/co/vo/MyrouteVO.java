@@ -12,16 +12,21 @@ public class MyrouteVO {
 	private String t_name1;
 	private double t_ny1;
 	private double t_nx1;
+	private String t_intro1;
 	private String t_name2;
 	private double t_ny2;
 	private double t_nx2;
+	private String t_intro2;
 	private String t_name3;
 	private double t_ny3;
 	private double t_nx3;
+	private String t_intro3;
 	private String ep_name;
 	private double ep_ny;
 	private double ep_nx;
 	private String contents;
 	private String userId;
-	
+	private int hit;
+	private int reply_count;
+	private int like_count;
 }

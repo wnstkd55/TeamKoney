@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myroute">
+	<select id="myroutelist" resultType="kr.co.vo.MyrouteVO">
+		SELECT *
+		FROM MY_ROUTE
+		ORDER BY MR_ID DESC
+	</select>
+	
+	<select id = "mplist" resultType="kr.co.vo.MyrouteVO" parameterType="String">
+		SELECT *
+		FROM my_route
+		WHERE USERID = #{userId}
+		ORDER BY MR_ID DESC
+	</select>
+	
+<!-- 	<select id="myroutelist" resultType="kr.co.vo.Myroute">
+		SELECT *
+		FROM MY_ROUTE
+		WHERE USERID = #{userId}
+	</select> -->
+	
+	<resultMap id="HeartVO" type="kr.co.vo.HeartVO">
+       <id property="heartid" column="HEARTID" />
+       <result property="mr_id" column="MR_ID"/>
+       <result property="userId" column="USERID"/>
+       <result property="heart" column="HEART"/>
+    </resultMap>
+	
+	<select id="waypoint" parameterType="String" resultType="kr.co.vo.MyrouteVO">
+		SELECT DP_NY, DP_NX, T_NY1, T_NX1, T_NY2, T_NX2, T_NY3, T_NX3, EP_NY, EP_NX
+		FROM MY_ROUTE
+		WHERE TITLE = #{title}
+	</select>
+	
+	<select id="read" parameterType="int" resultType="kr.co.vo.MyrouteVO">
+		SELECT *
+		FROM MY_ROUTE
+		WHERE MR_ID = #{mr_id}
+	</select>
+	
+	<update id ="viewcount" parameterType="int">
+		UPDATE MY_ROUTE
+		SET HIT = HIT+1
+		WHERE MR_ID = #{MR_ID}
+	</update>
+	
+	<update id="updateReplyCount" parameterType="int">
+		update my_route m
+		set m.reply_count = (select count(mr_no) from mr_reply where mr_bno = #{mr_bno})
+		where m.mr_id = #{mr_id}
+	</update>	
+	
+	<!--좋아요 여부 검사-->
+    <select id="findLike" parameterType="map" resultMap="HeartVO">
+        SELECT HEARTID, MR_ID, USERID, HEART
+        FROM HEART
+        WHERE MR_ID = #{mr_id} and USERID = #{userId}
+    </select>
+
+    <!--좋아요버튼 누른경우-->
+    <insert id="likePush" parameterType="map">
+        INSERT INTO HEART
+        (HEARTID, MR_ID, USERID, HEART)
+        VALUES
+        (mrlike_seq.nextval,#{mr_id},#{userId},1)
+    </insert>
+
+    <!--좋아요버튼 취소한 경우-->
+    <delete id="likeCancel" parameterType="map">
+        DELETE HEART
+        WHERE USERID = #{userId} and MR_ID=#{mr_id}
+    </delete>
+
+    <!-- 좋아요 1개 올라감.-->
+    <update id="likeCntUp" parameterType="Integer">
+        UPDATE my_route
+        SET  like_count = like_count+1
+        WHERE MR_ID =#{mr_id}
+    </update>
+
+    <!--좋아요 1개 감소 함-->
+    <update id="likeCntDown" parameterType="int">
+        UPDATE my_route
+        SET  like_count = like_count - 1
+        WHERE MR_ID = #{mr_id}
+    </update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE 
+		  FROM my_route
+		 WHERE MR_ID = #{mr_id}
+	</delete>
+	
+</mapper>

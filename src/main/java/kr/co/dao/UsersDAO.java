@@ -1,5 +1,8 @@
 package kr.co.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import kr.co.vo.UsersVO;
 
 public interface UsersDAO {
@@ -20,5 +23,16 @@ public interface UsersDAO {
 	
 	// 아이디 중복체크
 	public int idChk(UsersVO vo) throws Exception;
+	
+	//유저삭제
+	void userDrop(UsersVO vo) throws Exception;
+
+	List<UsersVO> adminlist() throws Exception;
+
+	void insertFile(Map<String, Object> map) throws Exception;
+	
+	public void updateFile(Map<String, Object> map) throws Exception;
+
+	List<UsersVO> userlist() throws Exception;
 	
 }

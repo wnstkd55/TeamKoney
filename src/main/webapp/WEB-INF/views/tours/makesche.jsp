@@ -8,34 +8,24 @@
 <%@ page import = "kr.co.tour.Tour" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="/resources/css/tourCSS/style_auto2.css">
  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
-	<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+<title>KoneyGram</title>
+<style>
+body{
+	background:#fff;
+}
+</style>
 </head>
-<body onload="initTmap()">
+<body onload="initTmap()" style="margin-top: 20px; margin-left:350px;">
 	<%
 		String cityname = request.getParameter("c_name");
 		String ny = null;
@@ -46,99 +36,125 @@
 		double m_ny = Double.parseDouble(ny);
 		double m_nx = Double.parseDouble(nx);
 	%>
-<header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-          </ul>
-        </div>
-      </div>
+<%@ include file="../menu/menu1.jsp" %>
+  <div class="container" style="width: 1024px;">
+  	<div class= "title">
+        <h1><%=cityname %>지역에서 선택해 주세요!</h1>
+        <p>관광지를 보여드립니다!</p>
     </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
-</header>	
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light"><%=cityname %>지역에서 선택해 주세요!</h1>
-        <p class="lead text-muted">관광지를 보여드립니다!</p>
-      </div>
-    </div>
-  </section>
-  <div class="container">
-		<div class="contents">
+    <ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="/tours/tour">1. 도시 선택</a></li>
+	  <li class="breadcrumb-item active">2. 일정 짜기</li>
+	</ol>
+		<div class="contents" style="background:rgba(231, 229, 229, 0.573);">
 			<div class = "left_items" style="width:100%;">
-				<h4>일정만들기</h4>
+			<c:if test="${user != null}">
+				<span>
+					<h5>${user.userId}님의 일정 만들기</h5>
+					<div class="buttongroup" style="float:right;">
+						<button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="마커 초기화" onclick="removeMarker();">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+							  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+							</svg>
+						</button>
+						<button class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="경로 보기" onclick="addpass();">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
+							  <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z"/>
+							</svg>
+						</button>
+					</div>
+				</span>
+			</c:if>
 				<div class ="make_sche">
-				<form action = "/toursave" method="post">
-						<input type="text" name="title" value="" placeholder="일정의 제목을 입력해주세요" >
+				<form name = "routeForm" action = "/tours/saveTour" method="post">
+						<input type="text" name="title" placeholder="일정의 제목을 입력해주세요" >
+						<input type="hidden" name = "userId" id="userId" value=${user.userId }>
 						<br>
 						<br>
 						<h5>출발지 입력하기</h5>
-						<input type = "text" id="dp_name" name="dp_name" value="" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');">
-						<input type = "hidden" id="dp_ny" name="dp_ny" value="">
-						<input type = "hidden" id="dp_nx" name="dp_nx" value="">
+						<input type = "text" id="dp_name" name="dp_name" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');">
+						<input type = "hidden" id="dp_ny" name="dp_ny">
+						<input type = "hidden" id="dp_nx" name="dp_nx">
 						<!-- <button id = "dpointcheck" onclick="geoLocation('S')">현재내위치 찍기</button> -->
+						<div class = "tour1">
 						<h5>관광지 입력하기</h5>
-							<input type = "text" id="t_name1" name = "tourname" value="" placeholder="관광지를 입력하세요">
+							<input type = "text" id="t_name1" name = "t_name1" placeholder="관광지를 입력하세요">
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=1" 
 								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
 							</a>
-							<input type = "hidden" id="t_ny1" name="t_ny1" value="">
-							<input type = "hidden" id="t_nx1" name="t_nx1" value="">
-						<h5>관광지 입력하기</h5>
-							<input type = "text" id="t_name2" name = "tourname" value="" placeholder="관광지를 입력하세요">
+							<input type = "hidden" id="t_ny1" name="t_ny1" >
+							<input type = "hidden" id="t_nx1" name="t_nx1" >
+							<input type = "hidden" id="t_intro1" name="t_intro1" >
+			        	<div>
+				        	<span class="wayPlus_bt_01" onclick="plusWay_02()">
+				               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								  <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+								</svg>
+				            </span>
+			            </div>
+						</div>
+						<div class = "tour2">
+							<h5>관광지 입력하기</h5>
+							<input type = "text" id="t_name2" name = "t_name2" placeholder="관광지를 입력하세요">
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=2" 
 								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
 							</a>
-							<input type = "hidden" id="t_ny2" name="t_ny2" value="">
-							<input type = "hidden" id="t_nx2" name="t_nx2" value="">
-						<h5>관광지 입력하기</h5>
-							<input type = "text" id="t_name3" name = "tourname" value="" placeholder="관광지를 입력하세요">
+							<input type = "hidden" id="t_ny2" name="t_ny2" >
+							<input type = "hidden" id="t_nx2" name="t_nx2" >
+							<input type = "hidden" id="t_intro2" name="t_intro2" >
+							<div>
+				               <span class="wayPlus_bt_02" onclick="plusWay_03()"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								  <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+								</svg></span>
+				               <span type="button" class="wayRemove_bt_02" onclick="removeWay_02()">
+				               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-dash" viewBox="0 0 16 16">
+								  <path fill-rule="evenodd" d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								</svg>
+				               </span>
+				            </div>
+						</div>
+						<div class = "tour3">
+							<h5>관광지 입력하기</h5>
+								<input type = "text" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요">
 								<a href="tourlist.jsp?c_name=<%=cityname %>&tag=3" 
 									onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 									관광리스트 보러가기
 								</a>
-								<input type = "hidden" id="t_ny3" name="t_ny3" value="">
-								<input type = "hidden" id="t_nx3" name="t_nx3" value="">
+								<input type = "hidden" id="t_ny3" name="t_ny3" >
+								<input type = "hidden" id="t_nx3" name="t_nx3" >
+								<input type = "hidden" id="t_intro3" name="t_intro3" >
+							<div>
+				               <span type="button" class="wayRemove_03" onclick="removeWay_03()">
+				               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-bookmark-dash" viewBox="0 0 16 16">
+								  <path fill-rule="evenodd" d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+								  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+								</svg>
+				               </span>
+				            </div>
+						</div>
 						<h5>도착지 입력하기</h5>
-						<input type = "text" id="ep_name" name="ep_name" value="" placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');">
-						<input type = "hidden" id="ep_ny" name="ep_ny" value="">
-						<input type = "hidden" id="ep_nx" name="ep_nx" value="">
+						<input type = "text" id="ep_name" name="ep_name"  placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');">
+						<input type = "hidden" id="ep_ny" name="ep_ny" >
+						<input type = "hidden" id="ep_nx" name="ep_nx" >
 						<br>
 						<br>
 						<br>
 						<br>
-						<textarea name="memo" placeholder="메모를 입력해주세요" style="width:100%; height: 100px"></textarea>
-						
-						<button type = "submit"> 저장하기</button>
+						<textarea name="contents" placeholder="메모를 입력해주세요" style="width:100%; height: 100px"></textarea>
+						<c:if test="${user != null}">
+						<button class = "btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="일정 저장하기" type = "submit">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill" viewBox="0 0 16 16">
+						  <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z"/>
+						</svg>
+						</button>
+						</c:if>
 						</form>
 					</div>
-				<button onclick="route();">경로확인하기</button>
-					<button onclick="removeMarker();"> 마커 지우기</button>
-					<button onclick="addpass();">관광지마커 저장하기</button>
 			</div>
 			<div class = "map">
 				<div id = "map_div"></div>
@@ -146,6 +162,16 @@
 		</div>
 	</div>
  	<script type="text/javascript">
+ 	
+	 	$(document).ready(function(){
+			var formObj = $("form[name='routeForm']");
+			$(".save_btn").on("click", function(){
+				formObj.attr("action","/tours/saveTour");
+				formObj.attr("method", "post");
+				formObj.submit();
+			})
+			
+		})
  	
  		let m_ny = <%=ny%>;
 		let m_nx = <%=nx%>;
@@ -170,8 +196,8 @@
 		function initTmap(){
 			map = new Tmapv2.Map("map_div",{
 				center:	 new Tmapv2.LatLng(m_ny, m_nx),
-				width : "800px",
-				height : "942px",
+				width : "550px",
+				height : "750px",
 				zoom: 10
 			});
 		};
@@ -280,6 +306,7 @@
 				removeMarker_s();
 	        	addMarker_s('S', lon, lat,1);
 	        	map.setCenter(new Tmapv2.LatLng(lat,lon));
+	        	map.setZoom(13);
 	        	st_x = lon;
 	        	st_y = lat;
 	        	console.log(st_x);
@@ -289,6 +316,7 @@
 	        	removeMarker_e();
 	        	addMarker_e('E',lon,lat,2);
 	        	map.setCenter(new Tmapv2.LatLng(lat,lon));
+	        	map.setZoom(13);
 	        	en_x = lon;
 	        	en_y = lat;
 	        	console.log(en_x);
@@ -306,6 +334,7 @@
 			console.log(lat);
 			addMarker_p('P', lon, lat, 3);
 			map.setCenter(new Tmapv2.LatLng(lat,lon));
+			map.setZoom(13);
 			
 			var tour = lon+","+lat;
 			tourlist.push(tour);
@@ -321,6 +350,7 @@
 			console.log(lat);
 			addMarker_p('P', lon, lat, 4);
 			map.setCenter(new Tmapv2.LatLng(lat,lon));
+			map.setZoom(13);
 			
 			var tour = lon+","+lat;
 			tourlist.push(tour);
@@ -337,7 +367,7 @@
 	            passList += tourlist[i]
 	        };
 	        console.log(passList);
-	        alert("관광지를 저장완료했습니다.");
+	        route();
 		}
 		
 		
@@ -508,7 +538,7 @@
 		}
 		
 		function removeMarker(){
-			
+			/* 			
 				for(var i in start_markerList){
 					start_markerList[i].setMap(null);
 				}
@@ -529,6 +559,9 @@
 				document.getElementById('t_name2').value = null;
 				document.getElementById('t_ny2').value = null;
 				document.getElementById('t_nx2').value = null;
+				document.getElementById('t_name3').value = null;
+				document.getElementById('t_ny3').value = null;
+				document.getElementById('t_nx3').value = null;
 			}
 			
 			
@@ -538,10 +571,31 @@
 				end_markerList=[];
 				document.getElementById('dp_name').value = null;
 				document.getElementById('dp_ny').value = null;
-				document.getElementById('dp_nx').value = null;
+				document.getElementById('dp_nx').value = null; */
 			
-			
+			location.reload(true);	
 		}
+		
+	function plusWay_02() {
+			document.querySelector(".tour2").style.display = 'block';
+		}
+		function plusWay_03() {
+			document.querySelector(".tour3").style.display = 'block';
+		}
+		function removeWay_02() {
+			document.querySelector(".tour2").style.display = 'none';
+			document.getElementById('t_name2').value=null;
+			document.getElementById('t_ny2').value=null;
+			document.getElementById('t_nx2').value=null;
+		}
+		function removeWay_03() {
+			document.querySelector(".tour3").style.display = 'none';
+			document.getElementById('t_name3').value=null;
+			document.getElementById('t_ny3').value=null;
+			document.getElementById('t_nx3').value=null;
+			
+			} 
+					
 		
 	</script>
 

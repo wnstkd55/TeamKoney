@@ -1,5 +1,8 @@
 package kr.co.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -43,10 +46,36 @@ public class UsersDAOImpl implements UsersDAO{
 		int result = sql.selectOne("userMapper.idChk", vo);
 		return result;
 	}
+
+	// 관리자 회원삭제
+	@Override
+	public void userDrop(UsersVO vo) throws Exception {
+		sql.delete("userMapper.userDrop", vo);
+		
+	}
 	
+	//관리자 list
+	@Override
+	public List<UsersVO> adminlist() throws Exception {
+		return sql.selectList("userMapper.adminlist");
+	}
 	
+	// 프로필 사진 업로드
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		sql.insert("userMapper.insertFile", map);
+	}
 	
+	// 프로필 사진 수정
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception {
+		sql.update("userMapper.updateFile", map);
+	}
 	
-	
+	//유저리스트
+	@Override
+	public List<UsersVO> userlist() throws Exception{
+		return sql.selectList("userMapper.userlist");
+	}
 	
 }

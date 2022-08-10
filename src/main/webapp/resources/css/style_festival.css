@@ -1,0 +1,29 @@
+*{
+	text-decoration: none;
+}	
+
+li {
+	list-style: none;
+	float: left;
+	padding: 6px;
+}
+			
+a{
+	text-decoration-line: none;
+	text-decoration: none;
+}
+
+.content{
+	display:flex;	
+}
+
+.mapimg{
+	margin-top:100px;
+	width:50%;
+}
+
+#root{
+	float: left;
+	margin-left: 100px;
+	width: 550px;
+}

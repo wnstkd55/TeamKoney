@@ -12,10 +12,17 @@ public class BoardVO {
 	private Date regdate;
 	private int hit;
 	private String answer;
+	private String userId;
 	
 
 	public int getBno() {
 		return bno;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
@@ -56,6 +63,7 @@ public class BoardVO {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+
 	
 	
 }

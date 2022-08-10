@@ -4,6 +4,9 @@
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/resources/css/style_festival2.css" rel="stylesheet">
 	 	<title>게시판</title>
 	</head>
 	
@@ -23,16 +26,16 @@
 	</script>
 	
 	<body>
-	
-		<div id="root">
-			<header>
-				<h1>${read.f_name}</h1>
-			</header>
-			<hr />
-			 
-
-			
-			<section id="container">
+	<%@ include file="../menu/menu1.jsp" %>
+		
+			<div class="container" style="margin-left:350px;margin-right: 0px;width: 1124px;">
+			<div class="left_content" style="margin-top:30px; margin-right:10px;">
+			<ol class="breadcrumb">
+			  <li class="breadcrumb-item list_btn"><a href="#">list</a></li>
+			  <li class="breadcrumb-item active">festival</li>
+			</ol>
+				<h4>${read.f_name}</h4>
+				<span style="font-size: 12px;">${read.f_home}</span>
 				<form name="readForm" role="form" method="post">
 				  <input type="hidden" id="bno" name="bno" value="${read.f_code}" >
 				  <input type="hidden" id="page" name="page" value="${scri.page}" > 
@@ -40,65 +43,30 @@
 				  <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" > 
 				  <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}" > 
 				</form>
-				<table>
-					<tbody>
-						<tr>
-							<td>
-								<label for="f_startdate">축제시작일</label><textarea id="f_startdate" name="f_startdate" readonly="readonly"><c:out value="${read.f_startdate}" /></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="f_enddate">축제종료일</label><textarea id="f_enddate" name="f_enddate" readonly="readonly"><c:out value="${read.f_enddate}" /></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="f_mainc">주관기관</label><textarea id="f_mainc" name="f_mainc" readonly="readonly"><c:out value="${read.f_mainc}" /></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="f_tel">전화번호</label><textarea id="f_tel" name="f_tel" readonly="readonly"><c:out value="${read.f_tel}" /></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="f_home">홈페이지</label><textarea id="f_home" name="f_home" readonly="readonly"><c:out value="${read.f_home}" /></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="f_content">축제정보</label><textarea id="f_content" name="f_content" readonly="readonly"><c:out value="${read.f_content}" /></textarea>
-							</td>
-						</tr>							
-					</tbody>			
-				</table>
-				<div>
-					<button type="submit" class="list_btn">목록</button>	
-				</div>
-				
-			</section>
 			<hr />
-			
+			<div class="accordion" id="accordionExample">
+			  <div class="accordion-item">
+			    <h2 class="accordion-header" id="headingOne">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+			       <span>축제 정보 보기</span>
+			      </button>
+			    </h2>
+			    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+			      <div class="accordion-body">
+					<label for="f_startdate">축제시작일: &nbsp</label><c:out value="${read.f_startdate}" /> <br/>
+					<label for="f_enddate">축제종료일: &nbsp</label><c:out value="${read.f_enddate}" /> <br/>
+					<label for="f_mainc">주관기관: &nbsp</label><c:out value="${read.f_mainc}" /> <br/>
+					<label for="f_tel">전화번호: &nbsp</label><c:out value="${read.f_tel}" /> <br/>
+					<label for="f_content">축제정보: &nbsp</label><c:out value="${read.f_content}" /> <br/>
+			      </div>
+			    </div>
+			  </div>
+			  </div>
+			</div>
+			<div class="right_content" style="margin-top:30px; margin-left:10px;">
 			 <jsp:include page="festivalMap.jsp"></jsp:include>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		</div>
+			 </div>
+			</div>
+		
 	</body>
 </html>

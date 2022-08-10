@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<title>게시판</title>
+		<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+	 	<title>KoneyGram</title>
 	</head>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -42,54 +43,52 @@
 		}
 		
 	</script>
-	<body>
-	
-		<div id="root">
-			<header>
-				<h1> 게시판</h1>
-			</header>
-			<hr />
-			 
-			<div>
-				<%@include file="nav.jsp" %>
-			</div>
-			<hr />
-			
-			<section id="container">
+	<body style="margin-left:350px;">
+	<%@ include file="../menu/menu1.jsp" %>
+		<div class="container" style="width:1000px;">
+				<h3>게시글 수정 페이지</h3>
+				<ol class="breadcrumb">
+				  <li class="breadcrumb-item"><a href="/board/list">List</a></li>
+				  <li class="breadcrumb-item active">Update View</li>
+				</ol>
 				<form name="updateForm" role="form" method="post" action="/board/update">
-					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
-					<table>
-						<tbody>
-							<tr>
-								<td>
-									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
-								</td>
-							</tr>	
-							<tr>
-								<td>
-									<label for="content">내용</label><textarea id="content" name="content" class="chk" title="내용을 입력하세요."><c:out value="${update.content}" /></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label for="writer">작성자</label><input type="text" id="writer" name="writer" value="${update.writer}" readonly="readonly"/>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label for="regdate">작성날짜</label>
-									<fmt:formatDate value="${update.regdate}" pattern="yyyy-MM-dd"/>					
-								</td>
-							</tr>		
-						</tbody>			
-					</table>
+				<table class="table">
+					<colgroup>
+						<col width="15%"/>
+						<col width="35%"/>
+						<col width="15%"/>
+						<col width="35%"/>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">글 번호</th>
+							<td><input type="text" name="bno" value="${update.bno}" /></td>
+						</tr>
+						<tr>
+							<th scope="row">작성자</th>
+							<td>${update.writer}</td>
+							<th scope="row">작성일</th>
+							<td><fmt:formatDate value="${update.regdate}" pattern="yyyy-MM-dd"/></td>
+						</tr>
+						<tr>
+							<th scope="row">제목</th>
+							<td colspan="3"><input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/></td>
+						</tr>
+						<tr>
+							<td colspan="4" class="view_text" style="margin-left:20px; margin-right:20px; height: 300px; background:#f6f6f6;">
+								<textarea id="content" name="content" class="chk" title="내용을 입력하세요." style="height:300px; resize: vertical; width:1000px;">
+									<c:out value="${update.content}" />
+								</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<hr />
 					<div>
-						<button type="submit" class="update_btn">저장</button>
-						<button type="submit" class="cancel_btn">취소</button>
+						<button type="submit" class="update_btn btn btn-outline-info">저장</button>
+						<button type="submit" class="cancel_btn btn btn-outline-danger">취소</button>
 					</div>
 				</form>
-			</section>
-			<hr />
 		</div>
 	</body>
 </html>

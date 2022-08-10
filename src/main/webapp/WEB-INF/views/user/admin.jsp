@@ -58,6 +58,7 @@
 										<td><c:out value="${adminlist.userEmail}" /></td>
 										<form name = "listUser">
 											<input type = "hidden" name = "userId" value = "${adminlist.userId}"/>
+											<input type = "hidden" name = "stored_file_name" value = "${adminlist.stored_file_name}"/>
 											<td><button class = "delete_btn btn btn-danger" type = "submit" > 회원삭제</button></td>
 										</form>
 									</tr>

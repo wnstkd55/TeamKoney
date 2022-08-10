@@ -62,7 +62,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">글 번호</th>
-							<td>${update.bno}</td>
+							<td><input type="text" name="bno" value="${update.bno}" /></td>
 						</tr>
 						<tr>
 							<th scope="row">작성자</th>

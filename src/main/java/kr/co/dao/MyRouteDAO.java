@@ -25,4 +25,8 @@ public interface MyRouteDAO {
 	int likeCntUp(Integer mr_id);
 
 	int likeCntDown(Integer mr_id);
+
+	void delete(int mr_id) throws Exception;
+
+	List<MyrouteVO> mproute(String userId) throws Exception;
 }

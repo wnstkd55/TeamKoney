@@ -28,7 +28,7 @@
         </div>
         <div class="contentbox">
             <div class="formbox" data-aos="fade-left">
-            <a href="/"><img alt="logo" src="/resources/images/contents/logo150a.png"></a>
+            <a href="/"><img alt="logo" src="/resources/images/contents/koney_logo.png"></a>
             <br/>
             <br/>
                 <h2>Login</h2>

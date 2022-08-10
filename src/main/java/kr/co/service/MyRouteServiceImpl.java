@@ -24,10 +24,23 @@ public class MyRouteServiceImpl implements MyRouteService {
 		dao.saveTour(myrouteVO);
 		
 	}
-	
+	// 전체유저 일정보기
 	@Override
 	public List<MyrouteVO> mrlist() throws Exception {
 		return dao.myroute();
+	}
+	
+	// 나의 일정보기
+	@Override
+	public List<MyrouteVO> mplist(String userId) throws Exception {
+		return dao.mproute(userId);
+	}
+	
+	//일정 삭제하기
+	@Override
+	public void delete(int mr_id) throws Exception {
+		
+		dao.delete(mr_id);
 	}
 	
 	// 게시물 조회

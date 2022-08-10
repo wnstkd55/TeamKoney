@@ -51,7 +51,7 @@
 	</script>
 	<body style="margin-left:350px;">
 	<%@ include file="../menu/menu1.jsp" %>
-		<div class="container" style="margin-top:50px;">
+		<div class="container" style="margin-top:50px; margin-left: 250px;">
 		<div class="card border-primary mb-3" style="max-width: 20rem;">
 		  <div class="card-header">회원정보수정</div>
 		  <div class="card-body">

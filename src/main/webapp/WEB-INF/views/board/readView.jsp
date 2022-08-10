@@ -190,7 +190,7 @@
 					
 					<c:if test="${user.userId eq 'admin'}">
 						<div>
-						    <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" />
+						    <input type="hidden" id="writer" name="writer" value="관리자"/>
 						    <br/>
 						    <label for="content">댓글 내용</label><input type="text" id="content" name="content" />
 						    <button type="button" class="replyWriteBtn btn btn-outline-primary">작성</button>

@@ -22,18 +22,14 @@
 <body>
 	<%@ include file="../menu/menu1.jsp" %>
 <main style="margin-top: 20px;margin-left: 350px; padding-left:100px; margin-right:100px;padding-left: 0px;">
-  <div class="header" >
-  	<div class= "container" style="text-align:center;">
-        <ol class="breadcrumb">
-	  		<li class="breadcrumb-item active">1. 도시 선택</li>
-		</ol>
-      </div>
-   </div>
   <div class="album py-5 bg-light">
     <div class="container" style="width:1000px;">
 		<div class="banner" style="margin-bottom:20px;">
-			<img alt="koney_scheduler" src="/resources/images/contents/koney_scheduler.jpg" style="width:1000px;">
+			<img alt="koney_scheduler" src="/resources/images/contents/koney_scheduler.jpg" style="width:100%;">
 		</div>
+		<ol class="breadcrumb">
+	  		<li class="breadcrumb-item active">1. 도시 선택</li>
+		</ol>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       	<%
 			CityDAO citydao = new CityDAO();

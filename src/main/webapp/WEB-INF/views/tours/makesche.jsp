@@ -306,6 +306,7 @@ body{
 				removeMarker_s();
 	        	addMarker_s('S', lon, lat,1);
 	        	map.setCenter(new Tmapv2.LatLng(lat,lon));
+	        	map.setZoom(13);
 	        	st_x = lon;
 	        	st_y = lat;
 	        	console.log(st_x);
@@ -315,6 +316,7 @@ body{
 	        	removeMarker_e();
 	        	addMarker_e('E',lon,lat,2);
 	        	map.setCenter(new Tmapv2.LatLng(lat,lon));
+	        	map.setZoom(13);
 	        	en_x = lon;
 	        	en_y = lat;
 	        	console.log(en_x);
@@ -332,6 +334,7 @@ body{
 			console.log(lat);
 			addMarker_p('P', lon, lat, 3);
 			map.setCenter(new Tmapv2.LatLng(lat,lon));
+			map.setZoom(13);
 			
 			var tour = lon+","+lat;
 			tourlist.push(tour);
@@ -347,6 +350,7 @@ body{
 			console.log(lat);
 			addMarker_p('P', lon, lat, 4);
 			map.setCenter(new Tmapv2.LatLng(lat,lon));
+			map.setZoom(13);
 			
 			var tour = lon+","+lat;
 			tourlist.push(tour);

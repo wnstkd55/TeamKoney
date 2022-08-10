@@ -60,8 +60,9 @@
 			        <br/>
 			        ${user.userIntro}
 			         <br/>
-			         <a href="userUpdateView" class="card-link">나의 정보 수정</a>
-		    		 <a href="userDeleteView" class="card-link">회원탈퇴하기</a>
+			         <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href='userUpdateView';">나의 정보 수정</button>
+		    		 <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href='/myroute/mplist?userId=${user.userId }';">나의일정 보러가기</button>
+		    		 <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href='userDeleteView';">회원탈퇴하기</button>
 			      </div>
 			    </div>
 			  </div>

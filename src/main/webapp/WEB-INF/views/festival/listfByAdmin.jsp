@@ -22,9 +22,10 @@
 	<div class = "mapimg">
 		<jsp:include page="kmap.jsp"></jsp:include>
 	</div>
-		<div id="root" style = "float: left;">
-			<br/>
-			<br/>		     
+		<div id="root" style="font-size:11px; margin-top:20px; height: 800px;">
+			<div class="koney_festival">
+				<img alt="koney_festival" src="/resources/images/contents/koney_festival.jpg" style="width:100%; margin-bottom: 20px;">
+			</div>	     
 			<div class="search form-group">
 			    <select name="searchType" id="searchType" onchange = "dateChange()">
 			      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>

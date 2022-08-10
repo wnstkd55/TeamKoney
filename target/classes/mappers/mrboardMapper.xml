@@ -9,6 +9,13 @@
 		ORDER BY MR_ID DESC
 	</select>
 	
+	<select id = "mplist" resultType="kr.co.vo.MyrouteVO" parameterType="String">
+		SELECT *
+		FROM my_route
+		WHERE USERID = #{userId}
+		ORDER BY MR_ID DESC
+	</select>
+	
 <!-- 	<select id="myroutelist" resultType="kr.co.vo.Myroute">
 		SELECT *
 		FROM MY_ROUTE
@@ -80,5 +87,11 @@
         SET  like_count = like_count - 1
         WHERE MR_ID = #{mr_id}
     </update>
-
+	
+	<delete id="delete" parameterType="int">
+		DELETE 
+		  FROM my_route
+		 WHERE MR_ID = #{mr_id}
+	</delete>
+	
 </mapper>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.service.MrReplyService;
@@ -33,6 +34,7 @@ public class MyRouteController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MyRouteController.class);
 	
+	//전체 유저 일정보기
 	@RequestMapping(value="/mrlist", method = RequestMethod.GET)
 	public String list(Model model) throws Exception{
 		logger.info("list");
@@ -40,6 +42,16 @@ public class MyRouteController {
 		model.addAttribute("list", mrservice.mrlist());
 		
 		return "myroute/mrlist";
+		
+	}
+	
+	//나의 일정 보기
+	@RequestMapping(value="/mplist", method = RequestMethod.GET)
+	public String mplist(Model model, @RequestParam("userId") String userId) throws Exception{
+
+		model.addAttribute("mplist", mrservice.mplist(userId));
+		
+		return "myroute/mplist";
 		
 	}
 	
@@ -53,6 +65,16 @@ public class MyRouteController {
 		
 		return "myroute/mrview";
 	}
+	
+	//일정 삭제
+		@RequestMapping(value = "/mrdelete", method = RequestMethod.GET)
+		public String delete(@RequestParam("mr_id") int mr_id) throws Exception{
+			logger.info("delete");
+			
+			mrservice.delete(mr_id);
+			
+			return "redirect:/myroute/mrlist";
+		}
 	
 	
 	

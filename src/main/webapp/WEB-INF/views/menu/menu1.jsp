@@ -205,10 +205,10 @@
                         <span>${user.userIntro }</span>
                         <br/>
 				      	<c:if test="${user.userId == 'admin' }">
-				   			<a href="/user/adminlist"><button type="button" class="btn btn-outline-secondary">회원관리</button></a>
+				   			<a href="/user/adminlist"><button type="button" class="btn btn-outline-secondary btn-sm" style="margin-left: 10%;">회원관리</button></a>
 				    	</c:if>
 				    	<c:if test="${user.userId !='admin' }">
-				   			<a href="/user/mypage"><button type="button" class="btn btn-outline-secondary btn-sm">마이페이지</button></a>
+				   			<a href="/user/mypage"><button type="button" class="btn btn-outline-secondary btn-sm" style="margin-left: 10%;">마이페이지</button></a>
 				    	</c:if>
                     </div>
                </c:if>

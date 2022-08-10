@@ -164,7 +164,15 @@
 		});
 	});
 	
-	
+	function deleteRoute(a){
+		if (!confirm("나의 일정을 삭제하시겠습니까?")) {
+			window.location.reload();
+        } else {
+        	location.href='/myroute/mrdelete?mr_id='+a;
+        }
+		
+		
+	}
 </script>
 </head>
 <body style="margin-left:350px;">
@@ -174,12 +182,11 @@
 	<div class="left_contents" style="width: 30%;">
 	<div class="container">
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="/myroute/mrlist">list</a></li>
+		  <li class="breadcrumb-item"><span style="cursor: pointer;"onclick="history.go(-1);">list</span></li>
 		  <li class="breadcrumb-item active">Story</li>
 		</ol>
 		<span>${read.userId } 의</span>
 		<h4>${read.title }</h4>
-			<%-- <span>글 내용 ${read.contents }</span> --%>
 			<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
 			  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
 			  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
@@ -194,6 +201,16 @@
 		    </c:otherwise>
 			</c:choose>
 			${read.like_count}</span>
+			<c:set var = "writer" value="${read.userId }"/>
+			<c:set var = "id" value="${user.userId }"/>
+			<c:if test="${ writer eq id}">
+				<button type="button" class="btn btn-danger btn-sm" onclick="deleteRoute(${read.mr_id});">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+				  	<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+				  	<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+				  	</svg>
+				</button>
+			</c:if>
 		<div class="card border-primary mb-3" style="max-width: 20rem;">
 		  <div class="card-header"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
 			  <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
@@ -520,6 +537,7 @@
                 }else{
                     $("#click_h").attr("src","<c:url value="/resources/images/full_heart.png"/>")
                 }
+                location.reload();
             },
             error : function (){
                 alert("로그인후 이용해주세요!");

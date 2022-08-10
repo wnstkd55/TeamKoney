@@ -263,8 +263,10 @@ START WITH 1
 INCREMENT BY 1 
 NOMAXVALUE NOCACHE;
 
-ALTER TABLE mp_file
-ADD CONSTRAINT uk_STORED_FILE_NAME unique(STORED_FILE_NAME);
+alter table mp_file add constraints uk_store_file unique(stored_file_name);
+
+alter table users add constraint FK_stored_file_name foreign key(stored_file_name)
+references mp_file(stored_file_name) on delete cascade;
 
 alter table users add STORED_FILE_NAME VARCHAR2(36);
 desc users;

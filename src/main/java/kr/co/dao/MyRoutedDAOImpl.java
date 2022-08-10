@@ -31,10 +31,20 @@ public class MyRoutedDAOImpl implements MyRouteDAO {
 	}
 	
 	@Override
+	public List<MyrouteVO> mproute(String userId) throws Exception{
+		return sqlSession.selectList("myroute.mplist",userId);
+	}
+	
+	@Override
 	public MyrouteVO read(int mr_id) throws Exception{
 		return sqlSession.selectOne("myroute.read",mr_id);
 	}
 	
+	@Override
+	public void delete(int mr_id) throws Exception {
+		
+		sqlSession.delete("myroute.delete", mr_id);
+	}
 	@Override
 	public void viewcount(int mr_id) throws Exception {
 		sqlSession.update("myroute.viewcount", mr_id);

@@ -63,16 +63,20 @@
 	
 	<!--  관리자 회원삭제-->
 	<delete id = "userDrop">
-		DELETE FROM USERS
-		WHERE USERID = #{userId}
+		DELETE MP_FILE 
+		WHERE USERID = (SELECT USERID FROM USERS WHERE STORED_FILE_NAME = #{stored_file_name})
 	</delete>
+
 	
 	<!-- 회원list -->
 	<select id="adminlist" resultType="kr.co.vo.UsersVO">
+	
 		SELECT USERID,
 			   USERNAME,
 			   USERAGE,
-			   USEREMAIL
+			   USEREMAIL,
+			   STORED_FILE_NAME
+
 		FROM USERS
 		
 	</select>

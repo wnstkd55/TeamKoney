@@ -25,8 +25,9 @@
 					<img alt="koney_placeimg" src="/resources/images/contents/koney_story.jpg" style="width:100%;">
 	</div>
 	<div class="album py-5 bg-light">
+	<h5>${user.userName }님의 저장된 일정 입니다.</h5>
 	      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-	      <c:forEach items="${list}" var="m">
+	      <c:forEach items="${mplist}" var="m">
 	        <div class="col">
 	          <div class="card shadow-sm">
 		          	<div class="thumbnail">

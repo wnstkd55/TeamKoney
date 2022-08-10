@@ -11,11 +11,17 @@ public interface MyRouteService {
 
 	MyrouteVO read(int mr_id) throws Exception;
 
-	List<MyrouteVO> mrlist() throws Exception;
+	List<MyrouteVO> mrlist() throws Exception;	//일정보기(전체)
+	
+	List<MyrouteVO> mplist(String userId) throws Exception;	//일정보기(마이페이지)
 
 	HeartVO findLike(Integer mr_id, String userId);
 	
 	int likesPush(Integer mr_id, String userId); //좋아요 버튼클릭
 	
 	int likesCancel(Integer mr_id, String userId); //좋아요버튼취소
+
+	void delete(int mr_id) throws Exception;
+
+	
 }

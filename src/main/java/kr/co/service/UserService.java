@@ -30,4 +30,6 @@ public interface UserService {
 
 	List<UsersVO> adminlist() throws Exception;
 
+	List<UsersVO> userlist() throws Exception;
+
 }

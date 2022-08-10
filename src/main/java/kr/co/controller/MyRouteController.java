@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.service.MrReplyService;
 import kr.co.service.MyRouteService;
+import kr.co.service.UserService;
 import kr.co.vo.HeartVO;
 import kr.co.vo.MrReplyVO;
 import kr.co.vo.MyrouteVO;
@@ -26,6 +27,9 @@ public class MyRouteController {
 	
 	@Inject
 	MyRouteService mrservice;
+	
+	@Inject
+	UserService userservice;
 	
 	@Autowired
 	@Lazy
@@ -40,6 +44,7 @@ public class MyRouteController {
 		logger.info("list");
 
 		model.addAttribute("list", mrservice.mrlist());
+		model.addAttribute("userlist", userservice.userlist());
 		
 		return "myroute/mrlist";
 		

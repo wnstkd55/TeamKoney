@@ -8,21 +8,149 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link rel = "stylesheet" href="/resources/css/style_mrlist.css">
-<title>Insert title here</title>
+<link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<title>KoneyGram</title>
 </head>
 <style>
 	.thumbnail img:hover{
 		border: solid black 2px;
 		transition: 0.25s;
 	}
+	
+.slide-container{
+  max-width: 800px;
+  width: 100%;
+  margin-top: 300px;
+  bottom: 300px;
+  background-color: rgba(255, 255, 255, 0.401);
+  padding:40px 0;
+}
+
+.slide-content{
+  margin: 0 40px;
+}
+
+.card{
+  border-radius: 25px;
+  background: #fff;
+}
+
+.image-content,
+.card-content{
+  display: flex;
+  flex-direction: column;   /*flex의 방향 정하기*/
+  align-items: center;    /* 가운데 정렬 */
+  padding: 10px 14px;
+}
+
+.image-content{
+  position: relative;
+  row-gap: 5px;
+  padding:25px 0;
+}
+
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ffcbcd;
+  border-radius: 25px 25px 0 25px;
+}
+
+
+.overlay::before,
+.overlay::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #ffcbcd;
+}
+
+.overlay::after{
+  border-radius: 0 25px 0 0;
+  background-color: #fff;
+}
+
+.card-image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+}
+
+.card-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;
+}
+
+.name{
+  font-size: 18px;
+  font-weight: 500;   /*글자 진하기정도*/
+  color: #333;    /* 검정색 계열의 좋은색깔2*/
+}
+
+.description{
+  font-size: 14px;
+  color: rgb(90, 49, 8);
+  text-align: center;
+}
+
+.button{
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 16px;
+  background-color: #b595f0;
+  border-radius: 10px;
+  margin: 14px;
+  transition: all 0.3s ease;
+}
+
+.button:hover{
+  transition: 0.5s;
+  background-color: #9468e7;
+}
 </style>
 <body style="margin-left:350px;">
-	<div>
 		<%@ include file="../menu/menu1.jsp" %>
-	</div>
 	<div class="container" style="width: 1124px;">
 	<div class="koney_story">
 					<img alt="koney_placeimg" src="/resources/images/contents/koney_story.jpg" style="width:100%;">
+	</div>
+	<div class= "userlist">
+	<div class="slide-container swiper" style="top: 0px;margin-top: 0px;bottom: 0px;">
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+            <c:forEach items="${userlist}" var="u">
+                <div class="card swiper-slide">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+                        <div class="card-image">
+                        	<img src="/resources/upload/${u.stored_file_name}" alt="userimage" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="name">${u.userName }</h2>
+                        <p class="description"> ${u.userIntro }</p>	
+                        <button class="button" onclick="location.href='/myroute/mplist?userId=${u.userId }';">일정 보러가기</button>
+                    </div>
+                </div>
+              </c:forEach>
+            </div>
+        </div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-pagination"></div>
+		</div>
 	</div>
 	<div class="album py-5 bg-light">
 	      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -61,6 +189,22 @@
 	      </div>
 	    </div>
 	</div>
-	
+	<script>
+var swiper = new Swiper(".slide-content", {
+	  slidesPerView: 3,
+	  spaceBetween: 30,
+	  slidesPerGroup: 3,
+	  loop: true,
+	  loopFillGroupWithBlank: true,
+	  pagination: {
+	    el: ".swiper-pagination",
+	    clickable: true,
+	  },
+	  navigation: {
+	    nextEl: ".swiper-button-next",
+	    prevEl: ".swiper-button-prev",
+	  },
+	});
+</script>
 </body>
 </html>

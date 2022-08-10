@@ -1,0 +1,396 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+    padding:0;
+    margin:0; 
+	background: #FFFFFF;
+} 
+
+#banner{   
+	position: absolute;   
+}     
+
+.oneByOne1{  
+	background: ;	
+	margin: 0;
+	width: 100vw;
+	height: 100vh;  
+	background: #EFEFEF url(../images/assets/paven.png) repeat;    
+	position: relative;
+	overflow: hidden;
+
+
+}   
+
+#banner .oneByOne_item{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;  
+	overflow: hidden;  
+
+}         
+                      
+#banner .oneByOne_item span{
+	font-family: "Lucida Grande", "Lucida Sans Unicode", helvetica, verdana, arial, sans-serif;
+}                                                                                              
+
+
+
+
+
+
+
+
+/* slide 1 */
+#banner img.img1{
+	position: absolute;
+	top: 284px;
+	left: 620px;
+}
+
+#banner img.img2{
+	position: absolute;
+	top: 164px;
+	left: 840px;
+}            
+
+#banner img.img1b{
+	position: absolute;
+	top: 154px;
+	left: 940px;
+	height: 5%;
+
+}         
+
+#banner img.img2b{
+	position: absolute;
+	top: 364px;
+	left: -800px;
+}         
+
+#banner img.img3b{
+	position: absolute;
+	top: 554px;
+	left: 940px;
+	height: 20%;
+}         
+
+
+#banner .oneByOne_item .text1{
+	position: relative;
+	float: left;
+	margin: 240px 12px 0 404px;
+	color: #ffffff;
+	font-size: 24px;
+}
+
+#banner .oneByOne_item .text2{          
+	clear: left;   
+	position: relative;
+	float: left;
+	margin: 4px 12px 0 404px;
+	color: #ffffff;	
+	font-size: 48px;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px rgb(87, 0, 51); 
+}             
+
+#banner .oneByOne_item .text3{              
+	position: absolute;
+	clear: left;   
+	margin: 0px 12px 0 0px;
+	color: #ffffff;
+	font-size: 24px;
+}
+
+#banner .oneByOne_item a{   
+	clear: left;      
+	position: absolute;
+	width: 6em;
+	margin: 50px 12px 0 4px;
+	text-align: center;
+	background-color: #333333;
+	border-radius: 1em;
+	color: #ffffff;
+	font-size: 24px;
+	text-decoration: none;
+
+}             
+
+
+
+/* slide 2 */
+
+
+
+
+#banner img.img21{
+	position: absolute;
+	top: 160px;
+	left: 607px;
+}
+
+#banner img.img22{
+	position: absolute;
+	top: 370px;
+	left: 370px;
+}            
+
+#banner img.img23{
+	position: absolute;
+	top: 200px;
+	left: 900px;
+}            
+
+#banner img.img24{
+	position: absolute;
+	top: 270px;
+	left: 623px;
+}            
+
+#banner img.img25{
+	position: absolute;
+	top: 465px;
+	left: 733px;
+}           
+
+#banner img.img26{
+	position: absolute;
+	top: 465px;
+	left: 605px;
+	z-index: 5;
+}            
+
+
+
+
+
+#banner img.img21b{
+	position: absolute;
+	top: 103px;
+	left: 220px;
+}         
+
+#banner img.img22b{
+	position: absolute;
+	top: 90px;
+	left: 1111px;
+	height: 25%;
+}         
+
+#banner img.img23b{
+	position: absolute;
+	top: 550px;
+	left: 450px;
+
+}         
+
+
+#banner .oneByOne_item .text1{
+	position: relative;
+	float: left;
+	margin: 140px 12px 0 404px;
+	color: #ffffff;
+	font-size: 24px;
+}
+
+#banner .oneByOne_item .text2{          
+	clear: left;   
+	position: relative;
+	float: left;
+	margin: 4px 12px 0 404px;
+	color: #ffffff;	
+	font-size: 48px;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px rgb(87, 0, 51); 
+}             
+
+#banner .oneByOne_item .text3{              
+	position: absolute;
+	clear: left;   
+	margin: 0px 12px 0 0px;
+	color: #ffffff;
+	font-size: 24px;
+}
+
+#banner .oneByOne_item a{   
+	clear: left;      
+	position: absolute;
+	width: 6em;
+	margin: 50px 12px 0 4px;
+	text-align: center;
+	background-color: #333333;
+	border-radius: 1em;
+	color: #ffffff;
+	font-size: 24px;
+	text-decoration: none;
+
+}             
+
+
+
+
+/* slide 3 */
+
+#banner img.img31{
+	position: absolute;
+	top: 425px;
+	left: 600px;
+}
+
+#banner img.img32{
+	position: absolute;
+
+	top: 305px;
+	left: 725px;
+}
+#banner img.img33{
+	position: absolute;
+	top: 265px;
+	left: 990px;
+}
+#banner img.img34{
+	position: absolute;
+	top: 195px;
+	left: 750px;
+}
+#banner img.img35{
+	position: absolute;
+
+	top: 205px;
+	left: 900px;
+}
+#banner img.img36{
+	position: absolute;
+	top: 105px;
+	left: 735px;
+}
+#banner img.img37{
+	position: absolute;
+
+	top: 133px;
+	left: 850px;
+}
+#banner img.img38{
+	position: absolute;
+
+	top: 55px;
+	left: 870px;
+}
+#banner img.img39{
+	position: absolute;
+	top: 40px;
+	left: 1175px;
+}
+
+
+
+#banner img.img30b{
+	position: absolute;
+	top: 81px;
+	left: 613px;
+}
+
+#banner img.img31b{
+	position: absolute;
+	top: 40px;
+	left: 495px;
+}
+
+
+#banner img.img32b{
+	position: absolute;
+	top: 220px;
+	left: 1170px;
+}
+
+
+#banner img.img33b{
+	position: absolute;
+	top: 580px;
+	left: 803px;
+}
+
+
+
+
+
+
+
+
+
+
+
+    
+
+/* slide 4 */   
+#banner img.wp1{
+	position: absolute;
+	top: 240px;
+	left: 380px;
+}
+#banner img.wp2{
+	position: absolute;
+	top: 200px;
+	left: 470px;
+}              
+#banner img.wp3{
+	position: absolute;
+	top: 100px;
+	left: 600px;
+}   
+
+#banner .oneByOne_item span.wp1{
+	clear: left;
+	position: relative;
+	float: left;
+	margin: 120px 12px 0 60px;    
+	background: #20B2AA;     
+	padding: 8px;
+	color: #FFFFFF;
+	font-size: 40px;
+} 
+#banner .oneByOne_item span.wp1 a{
+	color: #FFFFFF;
+}         
+#banner .oneByOne_item span.wp2{
+	clear: left;
+	position: relative;
+	float: left;
+	margin: 12px 12px 0 60px; 
+	
+	color: #FFFFFF;  
+	background: #5F9EA0;
+	padding: 8px;
+	font-size: 16px;
+}                  
+
+/* slide 5 */
+#banner .oneByOne_item img.bigImage{ 
+	position: absolute;
+	top: 0; 
+	left: 0;
+
+}
+#banner .oneByOne_item span.slide5Txt1{ 
+  	position: relative;
+	float: left;
+	margin: 150px 12px 0 600px;
+	color: #9ACD32;	
+	font-size: 24px;  
+	background: #FFFFFF;
+	padding: 8px;             
+}
+ 
+#banner .oneByOne_item span.slide5Txt2{ 
+  	position: relative;
+	clear: left;
+	float: left;
+	margin: 12px 12px 0 600px;
+	color: #666666;	
+	font-size: 12px;  
+	background: #FFFFFF;
+	padding: 8px;             
+}  

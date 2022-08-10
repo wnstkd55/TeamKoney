@@ -70,7 +70,6 @@
 	
 	<!-- 회원list -->
 	<select id="adminlist" resultType="kr.co.vo.UsersVO">
-	
 		SELECT USERID,
 			   USERNAME,
 			   USERAGE,
@@ -78,6 +77,12 @@
 			   STORED_FILE_NAME
 
 		FROM USERS
-		
+	</select>
+	
+	<!-- 회원리스트 보기 -->
+	<select id="userlist" resultType="kr.co.vo.UsersVO">
+		SELECT USERID, USERNAME, STORED_FILE_NAME,USERINTRO
+		FROM USERS
+		WHERE NOT USERID IN 'admin'
 	</select>
 </mapper>

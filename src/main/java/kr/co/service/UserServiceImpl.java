@@ -79,5 +79,11 @@ public class UserServiceImpl implements UserService {
 	public List<UsersVO> adminlist() throws Exception {
 		return dao.adminlist();
 	}
+	
+	//유저리스트(myroute페이지)
+	@Override
+	public List<UsersVO> userlist() throws Exception{
+		return dao.userlist();
+	}
 
 }

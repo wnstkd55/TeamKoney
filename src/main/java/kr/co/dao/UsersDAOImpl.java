@@ -72,5 +72,10 @@ public class UsersDAOImpl implements UsersDAO{
 		sql.update("userMapper.updateFile", map);
 	}
 	
+	//유저리스트
+	@Override
+	public List<UsersVO> userlist() throws Exception{
+		return sql.selectList("userMapper.userlist");
+	}
 	
 }

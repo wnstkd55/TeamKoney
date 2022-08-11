@@ -56,7 +56,7 @@
                         <input type="submit" value="Sign in">
                     </div>
                     <div class="inputbox">
-                        <p>Don't have and accoount?!<a href="#" onclick="register(); return false;">Sign Up!</a></p>
+                        <p>Don't have and account?!<a href="#" onclick="register(); return false;">Sign Up!</a></p>
                     </div>
                     </c:if>
                 </form>

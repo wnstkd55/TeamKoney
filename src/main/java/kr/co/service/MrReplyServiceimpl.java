@@ -37,4 +37,9 @@ public class MrReplyServiceimpl implements MrReplyService{
 		dao.deleteMr(mrvo);
 	}
 	
+	@Override
+	public List<MrReplyVO> finduser() throws Exception{
+		return dao.finduser();
+	}
+	
 }

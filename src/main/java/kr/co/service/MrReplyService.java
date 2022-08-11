@@ -15,6 +15,6 @@ public interface MrReplyService {
 
 	void deleteMr(MrReplyVO mrvo) throws Exception;
 
-	
+	List<MrReplyVO> finduser() throws Exception;
 
 }

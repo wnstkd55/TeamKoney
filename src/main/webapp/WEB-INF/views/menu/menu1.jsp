@@ -193,7 +193,7 @@
                 <b></b>
                 <a href="/">
                     <span class="icon"></span>
-                    <span class="title"><img src="/resources/images/contents/logo.png" style="width:200px; height: 100px;"></span>
+                    <span class="title"><img src="/resources/images/contents/koney_logo500.png" style="width:200px; height: 100px;"></span>
                 </a>
                 <br/>
                 <br/>

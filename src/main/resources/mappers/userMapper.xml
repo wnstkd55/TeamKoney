@@ -45,9 +45,10 @@
 	
 	<!-- 회원탈퇴 -->
 	<delete id="userDelete">
-		DELETE FROM USERS
-		WHERE USERID = #{userId} AND USERPWD = #{userPwd}
+		DELETE MP_FILE 
+		WHERE USERID = (SELECT USERID FROM USERS WHERE STORED_FILE_NAME = #{stored_file_name})
 	</delete>
+
 	
 	<!-- 비밀번호 확인 -->
 	<select id="passChk" resultType="int">

@@ -47,6 +47,11 @@
                     <div class="remember">
                         <label><input type="checkbox" name="">Remember me?</label>
                     </div>
+                    <c:if test="${msg == false}">
+						<p style="color: red;">로그인 실패!</p>
+						<p style="color: red;">아이디와 비밀번호 확인해주세요.</p>
+					</c:if>
+                    
                     <div class="inputbox">
                         <input type="submit" value="Sign in">
                     </div>
@@ -54,9 +59,6 @@
                         <p>Don't have and accoount?!<a href="#" onclick="register(); return false;">Sign Up!</a></p>
                     </div>
                     </c:if>
-                    <c:if test="${msg == false}">
-						<script> alert("로그인실패"); </script>
-					</c:if>
                 </form>
                 <h3>With Social Media</h3>
                 <ul class="sci">

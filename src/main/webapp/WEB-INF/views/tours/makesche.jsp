@@ -23,7 +23,28 @@
 body{
 	background:#fff;
 }
+
+.form-control {
+	width:250px;
+}
 </style>
+<script>
+(function() {
+  "use strict";
+  window.addEventListener("load", function() {
+    var form = document.getElementById("needs-validation");
+    form.addEventListener("submit", function(event) {
+      if (form.checkValidity() == false) {
+        event.preventDefault();
+        event.stopPropagation();
+        form.classList.add("was-validated");
+      }
+      
+      // 서버 연동 처리
+    }, false);
+  }, false);
+}());
+</script>
 </head>
 <body onload="initTmap()" style="margin-top: 20px; margin-left:350px;">
 	<%
@@ -66,19 +87,25 @@ body{
 				</span>
 			</c:if>
 				<div class ="make_sche">
-				<form name = "routeForm" action = "/tours/saveTour" method="post">
+				<form name = "routeForm" action = "/tours/saveTour" method="post" id="needs-validation" novalidate>
 						<input type="text" name="title" placeholder="일정의 제목을 입력해주세요" >
 						<input type="hidden" name = "userId" id="userId" value=${user.userId }>
 						<br>
 						<br>
 						<h5>출발지 입력하기</h5>
-						<input type = "text" id="dp_name" name="dp_name" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');">
+						<input type = "text" class="form-control" id="dp_name" name="dp_name" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');" required="">
+						<div class="invalid-feedback">
+					        출발지를 입력해야됩니다.
+					    </div>
 						<input type = "hidden" id="dp_ny" name="dp_ny">
 						<input type = "hidden" id="dp_nx" name="dp_nx">
 						<!-- <button id = "dpointcheck" onclick="geoLocation('S')">현재내위치 찍기</button> -->
 						<div class = "tour1">
 						<h5>관광지 입력하기</h5>
-							<input type = "text" id="t_name1" name = "t_name1" placeholder="관광지를 입력하세요">
+							<input type = "text" class="form-control" id="t_name1" name = "t_name1" placeholder="관광지를 입력하세요" required="">
+							<div class="invalid-feedback">
+					        	관광지를 입력해야됩니다.
+					    	</div>
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=1" 
 								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
@@ -97,7 +124,10 @@ body{
 						</div>
 						<div class = "tour2">
 							<h5>관광지 입력하기</h5>
-							<input type = "text" id="t_name2" name = "t_name2" placeholder="관광지를 입력하세요">
+							<input type = "text" class="form-control" id="t_name2" name = "t_name2" placeholder="관광지를 입력하세요" >
+						<!-- 	<div class="invalid-feedback">
+					        	관광지를 입력해야됩니다.
+					    	</div> -->
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=2" 
 								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
@@ -120,7 +150,10 @@ body{
 						</div>
 						<div class = "tour3">
 							<h5>관광지 입력하기</h5>
-								<input type = "text" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요">
+								<input type = "text" class="form-control" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요" >
+								<!-- <div class="invalid-feedback">
+						        	관광지를 입력해야됩니다.
+						    	</div> -->
 								<a href="tourlist.jsp?c_name=<%=cityname %>&tag=3" 
 									onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 									관광리스트 보러가기
@@ -138,7 +171,10 @@ body{
 				            </div>
 						</div>
 						<h5>도착지 입력하기</h5>
-						<input type = "text" id="ep_name" name="ep_name"  placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');">
+						<input type = "text" class="form-control" id="ep_name" name="ep_name"  placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');" required="">
+						<div class="invalid-feedback">
+					        	도착지를 입력해야됩니다.
+					    	</div>
 						<input type = "hidden" id="ep_ny" name="ep_ny" >
 						<input type = "hidden" id="ep_nx" name="ep_nx" >
 						<br>
@@ -161,6 +197,7 @@ body{
 			</div>
 		</div>
 	</div>
+	
  	<script type="text/javascript">
  	
 	 	$(document).ready(function(){
@@ -197,7 +234,7 @@ body{
 			map = new Tmapv2.Map("map_div",{
 				center:	 new Tmapv2.LatLng(m_ny, m_nx),
 				width : "550px",
-				height : "750px",
+				height : "900px",
 				zoom: 10
 			});
 		};

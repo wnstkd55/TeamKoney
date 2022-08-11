@@ -33,6 +33,7 @@
 			dataType : 'json',
 			success : function(result){
 				var comments = "";
+				var user_id = "${user.userId}";
 			if(result.length <1){
 				comments = "등록된 댓글이 없습니다.";
 			}else{
@@ -44,11 +45,13 @@
 					comments +='댓글 내용 : &nbsp;&nbsp;&nbsp;'+this.mr_content;
 					comments +='</p>';
 					comments +='<br/>';
-					comments +='<button type="button" class="btn btn-outline-success" onclick="updateviewBtn('+this.mr_no+',\''+this.mr_regdate+'\', \''+this.mr_content+'\', \''+this.mr_writer+'\')">';
-					comments +='댓글수정</button>';
-					comments +='<button type="button" class="btn btn-outline-success" onclick="mrdelete('+this.mr_no+')">';
-					comments +='댓글 삭제';
-					comments +='</button>';
+					if((this.mr_writer === user_id || user_id === "admin") && user_id !== "") {
+						comments +='<button type="button" class="btn btn-outline-success" onclick="updateviewBtn('+this.mr_no+',\''+this.mr_regdate+'\', \''+this.mr_content+'\', \''+this.mr_writer+'\')">';
+						comments +='댓글수정</button>';
+						comments +='<button type="button" class="btn btn-outline-success" onclick="mrdelete('+this.mr_no+')">';
+						comments +='댓글 삭제';
+						comments +='</button>';
+					}
 					comments +='</div>';
 					comments +='<br/>';
 				});
@@ -101,6 +104,7 @@
 		
 		$('#mr_no'+mr_no).replaceWith(commentsview);
 		$('#mr_no'+mr_no+'#mr_content').focus();
+	
 	};
 	
 	function updateBtn(mr_no, mr_writer){
@@ -170,9 +174,8 @@
         } else {
         	location.href='/myroute/mrdelete?mr_id='+a;
         }
-		
-		
 	}
+	
 </script>
 </head>
 <body style="margin-left:350px;">

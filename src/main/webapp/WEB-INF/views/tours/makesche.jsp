@@ -88,9 +88,11 @@ body{
 			</c:if>
 				<div class ="make_sche">
 				<form name = "routeForm" action = "/tours/saveTour" method="post" id="needs-validation" novalidate>
-						<input type="text" name="title" placeholder="일정의 제목을 입력해주세요" >
+						<input type="text" name="title" placeholder="일정의 제목을 입력해주세요" required="">
+						<div class="invalid-feedback">
+					        제목을 입력해야됩니다.
+					    </div>
 						<input type="hidden" name = "userId" id="userId" value=${user.userId }>
-						<br>
 						<br>
 						<h5>출발지 입력하기</h5>
 						<input type = "text" class="form-control" id="dp_name" name="dp_name" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');" required="">
@@ -124,10 +126,10 @@ body{
 						</div>
 						<div class = "tour2">
 							<h5>관광지 입력하기</h5>
-							<input type = "text" class="form-control" id="t_name2" name = "t_name2" placeholder="관광지를 입력하세요" >
-						<!-- 	<div class="invalid-feedback">
+							<input type = "text" class="form-control" id="t_name2" name = "t_name2" placeholder="관광지를 입력하세요" required="">
+							<div class="invalid-feedback">
 					        	관광지를 입력해야됩니다.
-					    	</div> -->
+					    	</div>
 							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=2" 
 								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
@@ -150,10 +152,10 @@ body{
 						</div>
 						<div class = "tour3">
 							<h5>관광지 입력하기</h5>
-								<input type = "text" class="form-control" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요" >
-								<!-- <div class="invalid-feedback">
+								<input type = "text" class="form-control" id="t_name3" name = "t_name3" placeholder="관광지를 입력하세요" required="">
+								<div class="invalid-feedback">
 						        	관광지를 입력해야됩니다.
-						    	</div> -->
+						    	</div>
 								<a href="tourlist.jsp?c_name=<%=cityname %>&tag=3" 
 									onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 									관광리스트 보러가기
@@ -177,8 +179,6 @@ body{
 					    	</div>
 						<input type = "hidden" id="ep_ny" name="ep_ny" >
 						<input type = "hidden" id="ep_nx" name="ep_nx" >
-						<br>
-						<br>
 						<br>
 						<br>
 						<textarea name="contents" placeholder="메모를 입력해주세요" style="width:100%; height: 100px"></textarea>

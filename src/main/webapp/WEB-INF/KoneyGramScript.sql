@@ -74,10 +74,6 @@ create sequence mp_reply_seq START WITH 1 MINVALUE 0;
 insert into mp_reply(bno, rno, content, writer)
     values(418, mp_reply_seq.nextval, '테스트댓글', '테스트 작성자');
 
-select rno, content, writer, regdate
-  from mp_reply
- where bno = 418;
-
 
 --SID번호 확인
 select name from v$database;
@@ -114,47 +110,10 @@ commit;
 -------------------------------------------------------------------------------------------
 --팀장님작업(tours)
 
+--tour에 대한 테이블은 csv에 있음
+
 select * from tours;		--관광지
 alter table tours add constraint pk_t_id primary key (t_id);
-
-/* 외래키 작업*/
-
-ALTER TABLE my_tourroute
-ADD CONSTRAINT fk_t_id foreign KEY(t_id) references tours (t_id);
-
-ALTER TABLE my_tourroute
-ADD CONSTRAINT fk_userid foreign KEY(userid) references users (userid) on delete cascade;
-
-
---행정구역 테이블
-create table city(
-    c_name varchar2(100) primary key,
-    c_ny number(38,8) not null,
-    c_nx number(38,8) not null,
-    c_pic varchar2(200)
-);
-
--- 행정구역 데이터
-insert into city values('강원도',37.555837,128.209315,'강원도.jpg');
-insert into city values('경기도',37.567167,127.190292,'경기도.jpg');
-insert into city values('경상남도',35.259787,128.664734,'경상남도.jpg');
-insert into city values('경상북도',36.248647,128.664734,'경상북도.jpg');
-insert into city values('충청남도',36.557229,126.779757,'충청남도.jpg');
-insert into city values('충청북도',36.628503,127.929344,'충청북도.jpg');
-insert into city values('서울특별시',37.540705,126.956764,'서울특별시.jpg');
-insert into city values('광주광역시',35.126033,126.831302,'광주광역시.jpg');
-insert into city values('대구광역시',35.798838,128.583052,'대구광역시.jpg');
-insert into city values('대전광역시',36.321655,127.378953,'대전광역시.jpg');
-insert into city values('부산광역시',35.198362,129.053922,'부산광역시.jpg');
-insert into city values('울산광역시',35.519301,129.239078,'울산광역시.jpg');
-insert into city values('인천광역시',37.469221,126.573234,'인천광역시.jpg');
-insert into city values('전라북도',35.716705,127.144185,'전라북도.jpg');
-insert into city values('전라남도',34.819400,126.893113,'전라남도.jpg');
-insert into city values('제주특별자치도',33.364805,126.542671,'제주특별자치도.jpg');
-
-select * from city;
-SELECT * FROM tours where t_city = '제주특별자치도';
-commit;
 
 --나의 일정 테이블
 create table my_route(
@@ -190,8 +149,39 @@ alter table my_route add t_intro1 VARCHAR2(2400);
 alter table my_route add t_intro2 VARCHAR2(2400);
 alter table my_route add t_intro3 VARCHAR2(2400);
 
+/* 외래키 작업*/
 
-commit;
+ALTER TABLE my_route
+ADD CONSTRAINT fk_mr_userid foreign KEY(userid) references users (userid) on delete cascade;
+
+--행정구역 테이블
+create table city(
+    c_name varchar2(100) primary key,
+    c_ny number(38,8) not null,
+    c_nx number(38,8) not null,
+    c_pic varchar2(200)
+);
+
+-- 행정구역 데이터
+insert into city values('강원도',37.555837,128.209315,'강원도.jpg');
+insert into city values('경기도',37.567167,127.190292,'경기도.jpg');
+insert into city values('경상남도',35.259787,128.664734,'경상남도.jpg');
+insert into city values('경상북도',36.248647,128.664734,'경상북도.jpg');
+insert into city values('충청남도',36.557229,126.779757,'충청남도.jpg');
+insert into city values('충청북도',36.628503,127.929344,'충청북도.jpg');
+insert into city values('서울특별시',37.540705,126.956764,'서울특별시.jpg');
+insert into city values('광주광역시',35.126033,126.831302,'광주광역시.jpg');
+insert into city values('대구광역시',35.798838,128.583052,'대구광역시.jpg');
+insert into city values('대전광역시',36.321655,127.378953,'대전광역시.jpg');
+insert into city values('부산광역시',35.198362,129.053922,'부산광역시.jpg');
+insert into city values('울산광역시',35.519301,129.239078,'울산광역시.jpg');
+insert into city values('인천광역시',37.469221,126.573234,'인천광역시.jpg');
+insert into city values('전라북도',35.716705,127.144185,'전라북도.jpg');
+insert into city values('전라남도',34.819400,126.893113,'전라남도.jpg');
+insert into city values('제주특별자치도',33.364805,126.542671,'제주특별자치도.jpg');
+
+select * from city;
+SELECT * FROM tours where t_city = '제주특별자치도';
 
 select * from festival;
 select * from tours;
@@ -258,15 +248,19 @@ CREATE TABLE MP_FILE
     PRIMARY KEY(FILE_NO)                    --기본키 FILE_NO
 );
 
+-- 프로필사진 시퀀스 추가
 CREATE SEQUENCE SEQ_MP_FILE_NO
 START WITH 1 
 INCREMENT BY 1 
 NOMAXVALUE NOCACHE;
 
+-- 유닠키 추가
 alter table mp_file add constraints uk_store_file unique(stored_file_name);
 
+--유저 삭제시 같이 삭제
 alter table users add constraint FK_stored_file_name foreign key(stored_file_name)
 references mp_file(stored_file_name) on delete cascade;
 
 alter table users add STORED_FILE_NAME VARCHAR2(36);
-desc users;
+
+commit;

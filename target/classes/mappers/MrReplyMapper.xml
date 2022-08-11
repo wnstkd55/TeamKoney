@@ -30,4 +30,10 @@
 		
 	</delete>
 	
+	<select id="finduser" resultType="MrReplyVO">
+	
+		select mr_writer from mr_reply
+		
+	</select>
+	
 </mapper>

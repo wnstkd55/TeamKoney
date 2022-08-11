@@ -35,4 +35,9 @@ public class MrReplyDAOImpl implements MrReplyDAO{
 	public void deleteMr(MrReplyVO mrvo) throws Exception{
 		sqlSession.insert("MrReply.mrdelete",mrvo);
 	}
+	
+	@Override
+	public List<MrReplyVO> finduser() throws Exception{
+		return sqlSession.selectList("MrReply.finduser");
+	}
 }

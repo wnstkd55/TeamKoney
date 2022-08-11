@@ -72,6 +72,10 @@
 					<label class="control-label" for="userName">성명</label>
 					<input class="form-control" type="text" id="userName" name="userName" value="${user.userName}" readonly="readonly"/>
 				</div>
+				<div>
+				<input type = "hidden" name = "stored_file_name" value = "${user.stored_file_name}"/>
+				</div>
+				
 				</form>
 			  </div>
 			  <div class="card-footer text-muted">

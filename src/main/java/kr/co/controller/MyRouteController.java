@@ -67,6 +67,7 @@ public class MyRouteController {
 		
 		model.addAttribute("read", mrservice.read(mrVO.getMr_id()));
 		model.addAttribute("reply",new MrReplyVO());
+		model.addAttribute("ru", mrrservice.finduser());
 		
 		return "myroute/mrview";
 	}

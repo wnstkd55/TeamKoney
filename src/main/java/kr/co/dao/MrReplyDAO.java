@@ -14,7 +14,8 @@ public interface MrReplyDAO {
 	void updateMr(MrReplyVO mrvo) throws Exception;
 
 	void deleteMr(MrReplyVO mrvo) throws Exception;
-	
-	
+
+	List<MrReplyVO> finduser() throws Exception;
+
 	
 }

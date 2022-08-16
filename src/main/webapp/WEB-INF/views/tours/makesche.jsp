@@ -101,7 +101,10 @@ body{
 					    </div>
 						<input type = "hidden" id="dp_ny" name="dp_ny">
 						<input type = "hidden" id="dp_nx" name="dp_nx">
-						<!-- <button id = "dpointcheck" onclick="geoLocation('S')">현재내위치 찍기</button> -->
+						<!-- <button class = "btn btn-outline-danger" id = "dpointcheck" onclick="geoLocation('S')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+						  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+						  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+						</svg></button> -->
 						<div class = "tour1">
 						<h5>관광지 입력하기</h5>
 							<input type = "text" class="form-control" id="t_name1" name = "t_name1" placeholder="관광지를 입력하세요" required="">
@@ -315,7 +318,7 @@ body{
 		        lat = position.coords.latitude; // 위도
 		        lon = position.coords.longitude; // 경도
 
-		        console.log(lat);
+		        console.log(lat);	//콘솔에서 위도 경도 보기
 		        console.log(lon);
 		        
 		        if(location == "S"){
@@ -330,11 +333,12 @@ body{
 		        	removeMarker_e();
 		        	addMarker_e("E",lon,lat,2);
 		        	map.setCenter(new Tmapv2.LatLng(lat,lon));
+		        	map.setZoom(13);
 		        	en_x = lon;
 		        	en_y = lat;
 		        }
 		    });
-		}; */
+		};  */
 		/*나의 위치찍기(끝)*/
 		
 		/*주소 팝업창에서 마크찍기(시작)*/

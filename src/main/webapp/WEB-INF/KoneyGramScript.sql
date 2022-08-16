@@ -109,7 +109,19 @@ commit;
 
 -------------------------------------------------------------------------------------------
 --팀장님작업(tours)
-
+--tours table
+CREATE TABLE tours ( 
+  t_id number NOT NULL primary key,
+  t_name VARCHAR2(200) NOT NULL,
+  t_loadaddress VARCHAR2(500),
+  t_gnumaddress VARCHAR2(500),
+  t_ny NUMBER(38, 8) NOT NULL,
+  t_nx NUMBER(38, 8) NOT NULL,
+  t_intro VARCHAR2(2400),
+  t_tel VARCHAR2(50),
+  t_photo VARCHAR2(200),
+  t_city varchar2(100) NOT NULL
+);    
 --tour에 대한 테이블은 csv에 있음
 
 select * from tours;		--관광지
@@ -183,7 +195,30 @@ insert into city values('제주특별자치도',33.364805,126.542671,'제주특�
 select * from city;
 SELECT * FROM tours where t_city = '제주특별자치도';
 
+-- 지역축제
+create table festival(
+	f_code number(38,8) primary key,
+	f_name varchar2(200),
+	f_place varchar2(200),
+	f_startdate varchar2(50),
+	f_enddate varchar2(50),
+	f_content varchar2(4000),
+	f_mainc varchar2(300),
+	f_subc varchar2(300),
+	f_sponc varchar2(300),
+	f_tel varchar2(30),
+	f_home varchar2(1000),
+	f_info varchar2(1000),
+	f_roadaddress varchar2(1000),
+	f_admin varchar2(100),
+	f_gnumaddress varchar2(1000),
+	f_ny number(38,8),
+	f_nx number(38,8)
+);
+
 select * from festival;
+
+
 select * from tours;
 delete festival where f_ny is null or f_nx is null;	--null값 다 제거
 

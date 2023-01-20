@@ -1,6 +1,4 @@
 # TeamKoney
-
-![image](https://user-images.githubusercontent.com/50855104/213604258-607aeb7d-170f-4dd4-94c8-1a68fb5ec2da.png)
 ![image](https://user-images.githubusercontent.com/50855104/213604280-508c8046-8a7c-4d17-a83b-fa3f38f4c6a9.png)
 ![image](https://user-images.githubusercontent.com/50855104/213604317-46f46442-3483-4f52-bdd1-a97b7d448c47.png)
 

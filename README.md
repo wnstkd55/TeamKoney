@@ -3,10 +3,10 @@
 ![image](https://user-images.githubusercontent.com/50855104/213604317-46f46442-3483-4f52-bdd1-a97b7d448c47.png)
 
 
-🎈기능
+                                                🎈기능
 ![image](https://user-images.githubusercontent.com/50855104/213604407-2daf5f3f-631e-4329-b3d9-fca9191e3784.png)
 
-⛑사용 기술
+                                              ⛑사용 기술
 ![image](https://user-images.githubusercontent.com/50855104/213604501-0b7c2860-0c18-4044-ae74-a052cd8809d5.png)
 
 📗 gantt chart
